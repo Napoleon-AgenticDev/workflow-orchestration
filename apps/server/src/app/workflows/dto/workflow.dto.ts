@@ -3,10 +3,10 @@ import { Type } from 'class-transformer';
 
 class TriggerDto {
   @IsString()
-  type: 'cron' | 'webhook' | 'manual' | 'event';
+  type!: 'cron' | 'webhook' | 'manual' | 'event';
 
   @IsObject()
-  config: Record<string, any>;
+  config!: Record<string, any>;
 }
 
 class MetadataDto {
@@ -19,12 +19,12 @@ class MetadataDto {
   tags?: string[];
 
   @IsString()
-  status: 'draft' | 'active' | 'paused';
+  status!: 'draft' | 'active' | 'paused';
 }
 
 export class CreateWorkflowDto {
   @IsString()
-  name: string;
+  name!: string;
 
   @IsOptional()
   @IsString()
@@ -36,7 +36,7 @@ export class CreateWorkflowDto {
 
   @ValidateNested()
   @Type(() => TriggerDto)
-  trigger: TriggerDto;
+  trigger!: TriggerDto;
 
   @ValidateNested()
   @Type(() => MetadataDto)
@@ -64,27 +64,27 @@ export class UpdateWorkflowDto {
 
 export class NodeDto {
   @IsString()
-  nodeId: string;
+  nodeId!: string;
 
   @IsString()
-  type: string;
+  type!: string;
 
-  positionX: number;
-  positionY: number;
+  positionX!: number;
+  positionY!: number;
 
   @IsObject()
-  data: Record<string, any>;
+  data!: Record<string, any>;
 }
 
 export class EdgeDto {
   @IsString()
-  edgeId: string;
+  edgeId!: string;
 
   @IsString()
-  source: string;
+  source!: string;
 
   @IsString()
-  target: string;
+  target!: string;
 
   @IsOptional()
   @IsString()
@@ -95,10 +95,10 @@ export class WorkflowNodesDto {
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => NodeDto)
-  nodes: NodeDto[];
+  nodes!: NodeDto[];
 
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => EdgeDto)
-  edges: EdgeDto[];
+  edges!: EdgeDto[];
 }

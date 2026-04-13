@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne, JoinColumn, OneToMany } from 'typeorm';
 import { Workflow } from '../../workflows/entities/workflow.entity';
+import { ExecutionNode } from './execution-node.entity';
 
 export enum ExecutionStatus {
   PENDING = 'pending',
@@ -12,33 +13,36 @@ export enum ExecutionStatus {
 @Entity()
 export class Execution {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id!: string;
 
   @Column()
-  workflowId: string;
+  workflowId!: string;
 
   @ManyToOne(() => Workflow)
   @JoinColumn({ name: 'workflowId' })
-  workflow: Workflow;
+  workflow!: Workflow;
+
+  @OneToMany(() => ExecutionNode, node => node.execution, { cascade: true })
+  nodes!: ExecutionNode[];
 
   @Column({ type: 'enum', enum: ExecutionStatus, default: ExecutionStatus.PENDING })
-  status: ExecutionStatus;
+  status!: ExecutionStatus;
 
   @Column({ type: 'jsonb', nullable: true })
-  input: Record<string, any>;
+  input?: Record<string, any>;
 
   @Column({ type: 'jsonb', nullable: true })
-  output: Record<string, any>;
+  output?: Record<string, any>;
 
   @Column({ nullable: true })
-  error: string;
+  error?: string;
 
   @Column({ nullable: true })
-  startedAt: Date;
+  startedAt?: Date;
 
   @Column({ nullable: true })
-  completedAt: Date;
+  completedAt?: Date;
 
   @CreateDateColumn()
-  createdAt: Date;
+  createdAt!: Date;
 }

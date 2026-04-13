@@ -4,24 +4,24 @@ import { Workflow } from './workflow.entity';
 @Entity()
 export class WorkflowEdge {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id!: string;
 
   @Column()
-  edgeId: string;
+  edgeId!: string;
 
   @Column()
-  source: string;
+  source!: string;
 
   @Column()
-  target: string;
+  target!: string;
 
   @Column({ nullable: true })
-  condition: string;
+  condition?: string;
 
   @ManyToOne(() => Workflow, workflow => workflow.edges, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'workflowId' })
-  workflow: Workflow;
+  workflow!: Workflow;
 
   @Column()
-  workflowId: string;
+  workflowId!: string;
 }

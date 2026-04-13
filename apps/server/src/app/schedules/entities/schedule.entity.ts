@@ -4,36 +4,36 @@ import { Workflow } from '../../workflows/entities/workflow.entity';
 @Entity()
 export class Schedule {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id!: string;
 
   @Column()
-  workflowId: string;
+  workflowId!: string;
 
   @ManyToOne(() => Workflow)
   @JoinColumn({ name: 'workflowId' })
-  workflow: Workflow;
+  workflow!: Workflow;
 
   @Column()
-  name: string;
+  name!: string;
 
   @Column()
-  cronExpression: string;
+  cronExpression!: string;
 
   @Column({ default: 'America/Denver' })
-  timezone: string;
+  timezone!: string;
 
   @Column({ default: true })
-  enabled: boolean;
+  enabled!: boolean;
 
   @Column({ type: 'jsonb', nullable: true })
-  config: Record<string, any>;
+  config?: Record<string, any>;
 
   @CreateDateColumn()
-  createdAt: Date;
+  createdAt!: Date;
 
   @Column({ nullable: true })
-  lastRunAt: Date;
+  lastRunAt?: Date;
 
   @Column({ nullable: true })
-  nextRunAt: Date;
+  nextRunAt?: Date;
 }
