@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
-import { Workflow, WorkflowNode, WorkflowEdge } from '../../models/workflow.model';
+import { Workflow, WorkflowNode, WorkflowEdge } from '@alchemy-flow/shared';
 
 interface Point { x: number; y: number }
 

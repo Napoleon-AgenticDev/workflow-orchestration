@@ -73,3 +73,32 @@ export interface Schedule {
   nextRunAt?: string;
   createdAt: string;
 }
+
+export interface CreateWorkflowDto {
+  name: string;
+  description?: string;
+  version?: string;
+  trigger: { type: string; config: Record<string, any> };
+  metadata?: { status: 'draft' | 'active' | 'paused' };
+}
+
+export interface UpdateWorkflowDto {
+  name?: string;
+  description?: string;
+  trigger?: { type: string; config: Record<string, any> };
+  metadata?: { status: 'draft' | 'active' | 'paused' };
+}
+
+export interface WorkflowNodesDto {
+  nodes: WorkflowNode[];
+  edges: WorkflowEdge[];
+}
+
+export interface CreateScheduleDto {
+  workflowId: string;
+  name: string;
+  cronExpression: string;
+  timezone?: string;
+  enabled?: boolean;
+  config?: Record<string, any>;
+}

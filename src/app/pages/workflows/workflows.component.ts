@@ -2,7 +2,7 @@ import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
-import { Workflow } from '../../models/workflow.model';
+import { Workflow } from '@alchemy-flow/shared';
 
 @Component({
   selector: 'app-workflows',

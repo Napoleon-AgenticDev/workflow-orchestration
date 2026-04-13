@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Workflow, Execution, Schedule, WorkflowNode, WorkflowEdge } from '../models/workflow.model';
+import { Workflow, Execution, Schedule, WorkflowNode, WorkflowEdge, CreateWorkflowDto, UpdateWorkflowDto, CreateScheduleDto } from '@alchemy-flow/shared';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
@@ -18,11 +18,11 @@ export class ApiService {
     return this.http.get<Workflow>(`${this.baseUrl}/workflows/${id}`);
   }
 
-  createWorkflow(workflow: Partial<Workflow>): Observable<Workflow> {
+  createWorkflow(workflow: CreateWorkflowDto): Observable<Workflow> {
     return this.http.post<Workflow>(`${this.baseUrl}/workflows`, workflow);
   }
 
-  updateWorkflow(id: string, workflow: Partial<Workflow>): Observable<Workflow> {
+  updateWorkflow(id: string, workflow: UpdateWorkflowDto): Observable<Workflow> {
     return this.http.put<Workflow>(`${this.baseUrl}/workflows/${id}`, workflow);
   }
 
@@ -57,7 +57,7 @@ export class ApiService {
     return this.http.get<Schedule>(`${this.baseUrl}/schedules/${id}`);
   }
 
-  createSchedule(schedule: Partial<Schedule>): Observable<Schedule> {
+  createSchedule(schedule: CreateScheduleDto): Observable<Schedule> {
     return this.http.post<Schedule>(`${this.baseUrl}/schedules`, schedule);
   }
 

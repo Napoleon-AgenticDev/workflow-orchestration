@@ -2,7 +2,7 @@ import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
-import { Workflow, Schedule } from '../../models/workflow.model';
+import { Workflow, Schedule } from '@alchemy-flow/shared';
 
 @Component({
   selector: 'app-schedules',

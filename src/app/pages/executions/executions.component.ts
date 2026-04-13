@@ -1,7 +1,7 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../services/api.service';
-import { Execution } from '../../models/workflow.model';
+import { Execution } from '@alchemy-flow/shared';
 
 @Component({
   selector: 'app-executions',

@@ -1,0 +1,27 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "bundler",
+    "emitDecoratorMetadata": false,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2022",
+    "module": "preserve",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@alchemy-flow/shared": ["libs/shared/src/index.ts"],
+      "@alchemy-flow/ui": ["libs/ui/src/index.ts"],
+      "@alchemy-flow/workflows": ["libs/features/workflows/src/index.ts"],
+      "@alchemy-flow/executions": ["libs/features/executions/src/index.ts"],
+      "@alchemy-flow/schedules": ["libs/features/schedules/src/index.ts"],
+      "@alchemy-flow/services": ["libs/utils/services/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}
