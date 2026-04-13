@@ -45,7 +45,7 @@ export class WorkflowsService {
 
   async update(id: string, dto: UpdateWorkflowDto): Promise<Workflow> {
     await this.findOne(id);
-    await this.workflowRepo.update(id, dto);
+    await this.workflowRepo.update(id, dto as any);
     return this.findOne(id);
   }
 
@@ -62,6 +62,7 @@ export class WorkflowsService {
 
     const nodes = dto.nodes.map(n => this.nodeRepo.create({
       ...n,
+      type: n.type as any,
       workflowId,
     }));
     const edges = dto.edges.map(e => this.edgeRepo.create({

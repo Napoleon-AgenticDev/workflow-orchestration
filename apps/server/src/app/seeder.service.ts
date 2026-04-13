@@ -1,9 +1,9 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Workflow } from '../workflows/entities/workflow.entity';
-import { WorkflowNode } from '../workflows/entities/node.entity';
-import { WorkflowEdge } from '../workflows/entities/edge.entity';
+import { Workflow } from './workflows/entities/workflow.entity';
+import { WorkflowNode } from './workflows/entities/node.entity';
+import { WorkflowEdge } from './workflows/entities/edge.entity';
 
 const marketingAlchemyWorkflow = {
   name: 'Marketing Alchemy Daily Campaign',

@@ -66,9 +66,9 @@ export class ExecutionsService {
           execNode.status = NodeExecutionStatus.SUCCESS;
           execNode.output = output;
           execNode.completedAt = new Date();
-        } catch (err) {
+        } catch (err: unknown) {
           execNode.status = NodeExecutionStatus.FAILED;
-          execNode.error = err.message;
+          execNode.error = err instanceof Error ? err.message : String(err);
           execNode.completedAt = new Date();
           throw err;
         }
@@ -78,9 +78,9 @@ export class ExecutionsService {
       execution.status = ExecutionStatus.SUCCESS;
       execution.output = results;
       execution.completedAt = new Date();
-    } catch (err) {
+    } catch (err: unknown) {
       execution.status = ExecutionStatus.FAILED;
-      execution.error = err.message;
+      execution.error = err instanceof Error ? err.message : String(err);
       execution.completedAt = new Date();
     }
 

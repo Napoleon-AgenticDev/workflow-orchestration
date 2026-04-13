@@ -8,13 +8,13 @@ import { CronJob } from 'cron';
 
 class CreateScheduleDto {
   @IsString()
-  workflowId: string;
+  workflowId!: string;
 
   @IsString()
-  name: string;
+  name!: string;
 
   @IsString()
-  cronExpression: string;
+  cronExpression!: string;
 
   @IsOptional()
   @IsString()

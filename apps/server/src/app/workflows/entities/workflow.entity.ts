@@ -5,39 +5,39 @@ import { WorkflowEdge } from './edge.entity';
 @Entity()
 export class Workflow {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id!: string;
 
   @Column()
-  name: string;
+  name!: string;
 
   @Column({ nullable: true })
-  description: string;
+  description?: string;
 
   @Column({ default: '1.0.0' })
-  version: string;
+  version!: string;
 
   @Column({ type: 'jsonb' })
-  trigger: {
+  trigger!: {
     type: 'cron' | 'webhook' | 'manual' | 'event';
     config: Record<string, any>;
   };
 
   @Column({ type: 'jsonb', nullable: true })
-  metadata: {
+  metadata?: {
     author?: string;
     tags?: string[];
     status: 'draft' | 'active' | 'paused';
   };
 
   @OneToMany(() => WorkflowNode, node => node.workflow, { cascade: true })
-  nodes: WorkflowNode[];
+  nodes!: WorkflowNode[];
 
   @OneToMany(() => WorkflowEdge, edge => edge.workflow, { cascade: true })
-  edges: WorkflowEdge[];
+  edges!: WorkflowEdge[];
 
   @CreateDateColumn()
-  createdAt: Date;
+  createdAt!: Date;
 
   @UpdateDateColumn()
-  updatedAt: Date;
+  updatedAt!: Date;
 }
