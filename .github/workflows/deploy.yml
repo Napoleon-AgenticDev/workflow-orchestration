@@ -38,6 +38,11 @@ jobs:
         working-directory: ./alchemy-flow
         run: npx nx build alchemy-flow --configuration=production
 
+      - name: Prepare static files
+        working-directory: ./alchemy-flow
+        run: |
+          cp dist/alchemy-flow/browser/index.csr.html dist/alchemy-flow/browser/index.html
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
