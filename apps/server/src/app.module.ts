@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { WorkflowsModule } from './workflows/workflows.module';
 import { ExecutionsModule } from './executions/executions.module';
 import { SchedulesModule } from './schedules/schedules.module';
+import { SeederService } from './seeder.service';
 import { Workflow } from './workflows/entities/workflow.entity';
 import { WorkflowNode } from './workflows/entities/node.entity';
 import { WorkflowEdge } from './workflows/entities/edge.entity';
@@ -26,5 +27,6 @@ import { Schedule } from './schedules/entities/schedule.entity';
     ExecutionsModule,
     SchedulesModule,
   ],
+  providers: [SeederService],
 })
 export class AppModule {}

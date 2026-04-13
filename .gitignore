@@ -49,3 +49,8 @@ Thumbs.db
 __screenshots__/
 
 vitest.config.*.timestamp*
+
+# Environment variables
+.env
+.env.local
+.env.*.local

@@ -1,0 +1,149 @@
+{
+  "name": "Marketing Alchemy Daily Campaign",
+  "description": "Daily automated marketing workflow: research → content creation → video generation → social publishing → analytics",
+  "trigger": {
+    "type": "cron",
+    "config": {
+      "cron": "0 8 * * *",
+      "timezone": "America/Denver"
+    }
+  },
+  "metadata": {
+    "status": "active",
+    "author": "Alchemy Flow",
+    "tags": ["marketing", "automation", "daily"]
+  },
+  "nodes": [
+    {
+      "id": "node-1",
+      "nodeId": "research",
+      "type": "skill",
+      "positionX": 100,
+      "positionY": 200,
+      "data": {
+        "name": "Content Research",
+        "skill": "marketing-engine",
+        "action": "research",
+        "params": {
+          "topics": ["AI agents", "developer tools", "automation"],
+          "sources": ["github", "twitter", "linkedin"]
+        }
+      }
+    },
+    {
+      "id": "node-2",
+      "nodeId": "content",
+      "type": "skill",
+      "positionX": 300,
+      "positionY": 200,
+      "data": {
+        "name": "Create Content",
+        "skill": "marketing-engine",
+        "action": "create-content",
+        "params": {
+          "type": "blog"
+        }
+      }
+    },
+    {
+      "id": "node-3",
+      "nodeId": "audio",
+      "type": "skill",
+      "positionX": 500,
+      "positionY": 100,
+      "data": {
+        "name": "Generate Audio",
+        "skill": "elevenlabs",
+        "action": "text-to-speech",
+        "params": {
+          "voice": "professional"
+        }
+      }
+    },
+    {
+      "id": "node-4",
+      "nodeId": "video",
+      "type": "skill",
+      "positionX": 700,
+      "positionY": 100,
+      "data": {
+        "name": "Generate Video",
+        "skill": "elevenlabs-video-generator",
+        "action": "create-video",
+        "params": {
+          "style": "marketing"
+        }
+      }
+    },
+    {
+      "id": "node-5",
+      "nodeId": "social-linkedin",
+      "type": "skill",
+      "positionX": 500,
+      "positionY": 300,
+      "data": {
+        "name": "Post to LinkedIn",
+        "skill": "marketing-engine",
+        "action": "publish-social",
+        "params": {
+          "platform": "linkedin"
+        }
+      }
+    },
+    {
+      "id": "node-6",
+      "nodeId": "social-twitter",
+      "type": "skill",
+      "positionX": 700,
+      "positionY": 300,
+      "data": {
+        "name": "Post to Twitter",
+        "skill": "marketing-engine",
+        "action": "publish-social",
+        "params": {
+          "platform": "twitter"
+        }
+      }
+    },
+    {
+      "id": "node-7",
+      "nodeId": "analytics",
+      "type": "api",
+      "positionX": 900,
+      "positionY": 200,
+      "data": {
+        "name": "Track Analytics",
+        "method": "POST",
+        "url": "/api/analytics/track",
+        "body": {
+          "campaign": "daily-marketing",
+          "metrics": ["views", "engagement", "clicks"]
+        }
+      }
+    },
+    {
+      "id": "node-8",
+      "nodeId": "approval",
+      "type": "condition",
+      "positionX": 900,
+      "positionY": 100,
+      "data": {
+        "name": "Need Approval?",
+        "conditionType": "if",
+        "expression": "content.priority === 'high'"
+      }
+    }
+  ],
+  "edges": [
+    { "edgeId": "edge-1", "source": "node-1", "target": "node-2" },
+    { "edgeId": "edge-2", "source": "node-2", "target": "node-3" },
+    { "edgeId": "edge-3", "source": "node-2", "target": "node-8" },
+    { "edgeId": "edge-4", "source": "node-3", "target": "node-4" },
+    { "edgeId": "edge-5", "source": "node-4", "target": "node-5" },
+    { "edgeId": "edge-6", "source": "node-4", "target": "node-6" },
+    { "edgeId": "edge-7", "source": "node-5", "target": "node-7" },
+    { "edgeId": "edge-8", "source": "node-6", "target": "node-7" },
+    { "edgeId": "edge-9", "source": "node-8", "target": "node-4", "condition": "true" },
+    { "edgeId": "edge-10", "source": "node-8", "target": "node-5", "condition": "false" }
+  ]
+}
