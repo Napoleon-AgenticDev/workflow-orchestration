@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated": "2026-02-08T18:17:13.534Z",
+  "repository": "unknown",
+  "description": "Machine-readable guardrails for automated enforcement",
+  "categories": {
+    "architecture": "Architectural boundaries and dependencies",
+    "testing": "Testing requirements and coverage",
+    "code-quality": "Code quality and linting",
+    "security": "Security and secrets handling"
+  },
+  "severityLevels": {
+    "blocker": "Must fix before merge - blocks PR",
+    "major": "Should fix before merge",
+    "minor": "Recommended fix",
+    "info": "Informational"
+  },
+  "guardrails": [
+    {
+      "id": "ARCH-001",
+      "category": "architecture",
+      "name": "Build Dependencies",
+      "severity": "blocker",
+      "automated": true,
+      "enforcement": {
+        "tool": "nx",
+        "config": "nx.json",
+        "command": "nx run-many --target=build --all"
+      },
+      "description": "Build targets must declare dependencies via dependsOn",
+      "rationale": "Ensures correct build order"
+    },
+    {
+      "id": "TEST-001",
+      "category": "testing",
+      "name": "Unit Tests Required",
+      "severity": "major",
+      "automated": true,
+      "enforcement": {
+        "tool": "jest",
+        "command": "npm test"
+      },
+      "description": "All code must have unit tests",
+      "rationale": "Prevents regressions"
+    },
+    {
+      "id": "QUAL-001",
+      "category": "code-quality",
+      "name": "Linting Required",
+      "severity": "blocker",
+      "automated": true,
+      "enforcement": {
+        "tool": "eslint",
+        "command": "nx run-many --target=lint --all"
+      },
+      "description": "All code must pass linting",
+      "rationale": "Maintains code quality standards"
+    }
+  ],
+  "metadata": {
+    "lastUpdated": "2026-02-08T18:17:13.534Z",
+    "reviewCadence": "quarterly"
+  }
+}

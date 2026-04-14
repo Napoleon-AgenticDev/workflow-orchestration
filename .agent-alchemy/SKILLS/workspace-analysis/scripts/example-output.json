@@ -1,0 +1,43 @@
+{
+  "timestamp": "2026-02-08T09:27:50.123Z",
+  "workspace": {
+    "name": "buildmotion-ai-agency",
+    "type": "nx",
+    "projectCount": 12,
+    "appsCount": 6,
+    "libsCount": 6
+  },
+  "copilotIntegration": {
+    "score": 85,
+    "rating": "Excellent",
+    "artifactsPresent": {
+      "stack": true,
+      "guardrails": true,
+      "evidence": true
+    },
+    "specificationCoverage": {
+      "totalProjects": 12,
+      "withSpecs": 10,
+      "coveragePercent": 83
+    }
+  },
+  "issues": {
+    "critical": 0,
+    "high": 2,
+    "medium": 5,
+    "low": 8,
+    "total": 15
+  },
+  "artifacts": {
+    "stack": ".agent-alchemy/specs/stack/stack.json",
+    "guardrails": ".agent-alchemy/specs/guardrails/guardrails.json",
+    "evidence": ".agent-alchemy/specs/evidence/"
+  },
+  "reports": {
+    "summary": ".agent-alchemy/reports/specops-analysis/2026-02-08_09-27-50/workspace-analysis-report.md",
+    "metadata": ".agent-alchemy/reports/specops-analysis/2026-02-08_09-27-50/analysis-metadata.json",
+    "issues": ".agent-alchemy/reports/specops-analysis/2026-02-08_09-27-50/issues-detailed.json",
+    "remediation": ".agent-alchemy/reports/specops-analysis/2026-02-08_09-27-50/remediation-report.md",
+    "fullData": ".agent-alchemy/reports/specops-analysis/2026-02-08_09-27-50/full-analysis.json"
+  }
+}

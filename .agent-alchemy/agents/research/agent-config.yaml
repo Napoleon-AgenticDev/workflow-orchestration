@@ -1,0 +1,7 @@
+intents:
+  research:
+    skill: .agent-alchemy/SKILLS/research-and-ideation/run.sh
+    description: Generate research prompts and scaffold research folders for a feature/topic
+  research-and-ideation:
+    skill: .agent-alchemy/SKILLS/research-and-ideation/run.sh
+    description: Alias for research intent - uses the research-and-ideation SKILL

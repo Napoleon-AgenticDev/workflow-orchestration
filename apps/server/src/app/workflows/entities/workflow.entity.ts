@@ -1,11 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany, Index } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
 import { WorkflowNode } from './node.entity';
 import { WorkflowEdge } from './edge.entity';
 
 @Entity()
-@Index('IDX_workflow_name', ['name'])
-@Index('IDX_workflow_updated_at', ['updatedAt'])
-@Index('IDX_workflow_created_at', ['createdAt'])
 export class Workflow {
   @PrimaryGeneratedColumn('uuid')
   id!: string;
@@ -26,7 +23,6 @@ export class Workflow {
   };
 
   @Column({ type: 'jsonb', nullable: true })
-  @Index('IDX_workflow_metadata_status', { synchronize: false })
   metadata?: {
     author?: string;
     tags?: string[];

@@ -1,4 +1,4 @@
-import { IsString, IsOptional, IsObject, IsArray, ValidateNested, IsNumber } from 'class-validator';
+import { IsString, IsOptional, IsObject, IsArray, ValidateNested } from 'class-validator';
 import { Type } from 'class-transformer';
 
 class TriggerDto {
@@ -55,7 +55,7 @@ export class UpdateWorkflowDto {
 
   @IsOptional()
   @IsObject()
-  trigger?: { type: 'cron' | 'webhook' | 'manual' | 'event'; config: Record<string, any> };
+  trigger?: { type: string; config: Record<string, any> };
 
   @IsOptional()
   @IsObject()
@@ -69,10 +69,7 @@ export class NodeDto {
   @IsString()
   type!: string;
 
-  @IsNumber()
   positionX!: number;
-
-  @IsNumber()
   positionY!: number;
 
   @IsObject()

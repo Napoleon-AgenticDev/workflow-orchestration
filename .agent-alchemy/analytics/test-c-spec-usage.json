@@ -1,0 +1,90 @@
+{
+  "$schema": "./spec-usage.schema.json",
+  "feature": {
+    "name": "Product & Feature Management",
+    "id": "product-feature-management",
+    "product": "alchemy-flow"
+  },
+  "execution": {
+    "id": "test-c-spec-driven-v1",
+    "startTime": "2026-04-13T18:00:00.000Z",
+    "approach": "spec-driven-with-citations",
+    "humanReview": true
+  },
+  "specifications": {
+    "hierarchical": {
+      "stack": {
+        "path": ".agent-alchemy/specs/stack",
+        "specs": [
+          { "name": "stack.json", "path": "stack/stack.json", "used": true, "relevance": "high" },
+          { "name": "technology-stack.md", "path": "stack/technology-stack.md", "used": true, "relevance": "high" },
+          { "name": "angular/services.md", "path": "stack/angular/services.md", "used": true, "relevance": "high" },
+          { "name": "angular/components.md", "path": "stack/angular/components.md", "used": true, "relevance": "high" },
+          { "name": "angular/http-data-access.md", "path": "stack/angular/http-data-access.md", "used": true, "relevance": "high" }
+        ]
+      },
+      "frameworks": {
+        "path": ".agent-alchemy/specs/frameworks",
+        "specs": [
+          { "name": "nestjs-fundamentals.specification.md", "path": "frameworks/nestjs/nestjs-fundamentals.specification.md", "used": true, "relevance": "critical" },
+          { "name": "nestjs-database-integration.specification.md", "path": "frameworks/nestjs/nestjs-database-integration.specification.md", "used": true, "relevance": "critical" },
+          { "name": "angular/coding-standards.specification.md", "path": "frameworks/angular/coding-standards.specification.md", "used": true, "relevance": "high" }
+        ]
+      },
+      "standards": {
+        "path": ".agent-alchemy/specs/standards",
+        "specs": [
+          { "name": "testing-guidelines.specification.md", "path": "standards/testing-guidelines.specification.md", "used": true, "relevance": "high" },
+          { "name": "documentation-standards.specification.md", "path": "standards/documentation-standards.specification.md", "used": true, "relevance": "medium" }
+        ]
+      }
+    },
+    "featureSpecific": {
+      "path": ".agent-alchemy/products/alchemy-flow/features/product-feature-management",
+      "specs": [
+        { "name": "feasibility-analysis.specification.md", "path": "research/feasibility-analysis.specification.md", "used": true },
+        { "name": "functional-requirements.specification.md", "path": "plan/functional-requirements.specification.md", "used": true },
+        { "name": "system-architecture.specification.md", "path": "architecture/system-architecture.specification.md", "used": true },
+        { "name": "implementation-guide.specification.md", "path": "development/implementation-guide.specification.md", "used": true },
+        { "name": "testing-strategy.specification.md", "path": "development/testing-strategy.specification.md", "used": true }
+      ]
+    }
+  },
+  "implementation": {
+    "files": [
+      { "path": "apps/server/src/app/products/entities/product.entity.ts", "loc": 68, "citations": 5 },
+      { "path": "apps/server/src/app/products/entities/product-feature.entity.ts", "loc": 62, "citations": 4 },
+      { "path": "apps/server/src/app/products/products.service.ts", "loc": 85, "citations": 5 },
+      { "path": "apps/server/src/app/products/products.controller.ts", "loc": 78, "citations": 5 },
+      { "path": "src/app/pages/products/products.component.ts", "loc": 288, "citations": 5 }
+    ],
+    "totalLoc": 581,
+    "totalCitations": 24
+  },
+  "analytics": {
+    "retrievalCalls": [
+      { "query": "TypeORM entity patterns", "resultsCount": 3, "timestamp": "2026-04-13T18:30:00.000Z" },
+      { "query": "NestJS service layer", "resultsCount": 2, "timestamp": "2026-04-13T18:32:00.000Z" },
+      { "query": "Angular signals state", "resultsCount": 4, "timestamp": "2026-04-13T18:35:00.000Z" }
+    ],
+    "specUsageByCategory": {
+      "stack": { "planned": 5, "used": 5 },
+      "frameworks": { "planned": 3, "used": 3 },
+      "standards": { "planned": 2, "used": 2 },
+      "featureSpecific": { "planned": 5, "used": 5 }
+    },
+    "citationLog": [
+      { "specPath": "specs/frameworks/nestjs/nestjs-database-integration.specification.md", "context": "entity definitions", "files": 2 },
+      { "specPath": "specs/frameworks/nestjs/nestjs-fundamentals.specification.md", "context": "service layer", "files": 2 },
+      { "specPath": "specs/stack/angular/services.md", "context": "signal state", "files": 1 },
+      { "specPath": "specs/stack/angular/architecture.md", "context": "component structure", "files": 1 },
+      { "specPath": "products/alchemy-flow/features/.../system-architecture.specification.md", "context": "API endpoints", "files": 2 }
+    ]
+  },
+  "score": {
+    "specCompliance": 100,
+    "citationRate": 4.13,
+    "retrievalScore": 85,
+    "overall": 93
+  }
+}

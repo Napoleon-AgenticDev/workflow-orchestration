@@ -14,7 +14,7 @@
       }
     },
     "serve": {
-      "command": "node dist/apps/server/main.js",
+      "command": "node dist/apps/server/src/main.js",
       "dependsOn": ["build"]
     },
     "lint": {

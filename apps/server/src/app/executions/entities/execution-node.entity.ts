@@ -12,33 +12,33 @@ export enum NodeExecutionStatus {
 @Entity()
 export class ExecutionNode {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id!: string;
 
   @Column()
-  executionId: string;
+  executionId!: string;
 
   @ManyToOne(() => Execution, execution => execution.nodes, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'executionId' })
-  execution: Execution;
+  execution!: Execution;
 
   @Column()
-  nodeId: string;
+  nodeId!: string;
 
   @Column({ type: 'enum', enum: NodeExecutionStatus, default: NodeExecutionStatus.PENDING })
-  status: NodeExecutionStatus;
+  status!: NodeExecutionStatus;
 
   @Column({ type: 'jsonb', nullable: true })
-  input: Record<string, any>;
+  input?: Record<string, any>;
 
   @Column({ type: 'jsonb', nullable: true })
-  output: Record<string, any>;
+  output?: Record<string, any>;
 
   @Column({ nullable: true })
-  error: string;
+  error?: string;
 
   @Column({ nullable: true })
-  startedAt: Date;
+  startedAt?: Date;
 
   @Column({ nullable: true })
-  completedAt: Date;
+  completedAt?: Date;
 }

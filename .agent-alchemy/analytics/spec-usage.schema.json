@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Specification Usage Analytics Schema",
+  "description": "JSON schema for tracking which specifications are used during feature implementation",
+  "version": "1.0.0",
+  "generated": "2026-04-13T00:00:00.000Z",
+  "feature": {
+    "name": "Product & Feature Management",
+    "id": "product-feature-management",
+    "product": "alchemy-flow"
+  },
+  "execution": {
+    "id": "test-c-spec-driven",
+    "startTime": "2026-04-13T00:00:00.000Z",
+    "endTime": null,
+    "approach": "spec-driven-with-citations"
+  },
+  "specifications": {
+    "hierarchical": {
+      "total": 480,
+      "files": 236984,
+      "categories": [
+        {
+          "category": "stack",
+          "path": ".agent-alchemy/specs/stack",
+          "files": 15,
+          "lines": 4500,
+          "used": []
+        },
+        {
+          "category": "frameworks",
+          "path": ".agent-alchemy/specs/frameworks",
+          "files": 45,
+          "lines": 28000,
+          "used": []
+        },
+        {
+          "category": "standards",
+          "path": ".agent-alchemy/specs/standards",
+          "files": 8,
+          "lines": 5200,
+          "used": []
+        },
+        {
+          "category": "libraries",
+          "path": ".agent-alchemy/specs/libraries",
+          "files": 52,
+          "lines": 35000,
+          "used": []
+        },
+        {
+          "category": "foundation",
+          "path": ".agent-alchemy/specs/foundation",
+          "files": 2,
+          "lines": 800,
+          "used": []
+        }
+      ]
+    },
+    "featureSpecific": {
+      "total": 5,
+      "files": [
+        {
+          "name": "feasibility-analysis.specification.md",
+          "path": ".agent-alchemy/products/alchemy-flow/features/product-feature-management/research/feasibility-analysis.specification.md",
+          "used": false,
+          "citations": []
+        },
+        {
+          "name": "functional-requirements.specification.md",
+          "path": ".agent-alchemy/products/alchemy-flow/features/product-feature-management/plan/functional-requirements.specification.md",
+          "used": false,
+          "citations": []
+        },
+        {
+          "name": "system-architecture.specification.md",
+          "path": ".agent-alchemy/products/alchemy-flow/features/product-feature-management/architecture/system-architecture.specification.md",
+          "used": false,
+          "citations": []
+        },
+        {
+          "name": "implementation-guide.specification.md",
+          "path": ".agent-alchemy/products/alchemy-flow/features/product-feature-management/development/implementation-guide.specification.md",
+          "used": false,
+          "citations": []
+        },
+        {
+          "name": "testing-strategy.specification.md",
+          "path": ".agent-alchemy/products/alchemy-flow/features/product-feature-management/development/testing-strategy.specification.md",
+          "used": false,
+          "citations": []
+        }
+      ]
+    }
+  },
+  "implementation": {
+    "files": [],
+    "totalLoc": 0,
+    "totalCitations": 0,
+    "citationRate": 0
+  },
+  "analytics": {
+    "specUsageByCategory": {
+      "stack": { "planned": 5, "used": 0 },
+      "frameworks": { "planned": 8, "used": 0 },
+      "standards": { "planned": 3, "used": 0 },
+      "libraries": { "planned": 4, "used": 0 },
+      "featureSpecific": { "planned": 5, "used": 0 }
+    },
+    "retrievalEffectiveness": {
+      "totalQueries": 0,
+      "relevantResults": 0,
+      "relevanceScore": 0
+    }
+  },
+  "score": {
+    "specCompliance": 0,
+    "citationRate": 0,
+    "retrievalScore": 0,
+    "overall": 0
+  }
+}
