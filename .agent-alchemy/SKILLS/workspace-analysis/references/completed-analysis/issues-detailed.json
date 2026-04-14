@@ -1,0 +1,57 @@
+[
+  {
+    "severity": "medium",
+    "category": "quality",
+    "title": "Low YAML Frontmatter Coverage",
+    "description": "Only 47.6% of specifications have YAML frontmatter with metadata.",
+    "affectedFiles": [
+      ".agent-alchemy/specs/libraries/angular/actions-modernization.specification.md",
+      ".agent-alchemy/specs/libraries/angular/actions.specification.md",
+      ".agent-alchemy/specs/libraries/angular/angular-clean-architecture.specification.md",
+      ".agent-alchemy/specs/libraries/angular/common.specification.md",
+      ".agent-alchemy/specs/libraries/angular/configuration.specification.md",
+      ".agent-alchemy/specs/libraries/angular/core.specification.md",
+      ".agent-alchemy/specs/libraries/angular/error-handling.specification.md",
+      ".agent-alchemy/specs/libraries/angular/feature-flag.specification.md",
+      ".agent-alchemy/specs/libraries/angular/foundation.specification.md",
+      ".agent-alchemy/specs/libraries/angular/http-service-signals.specification.md",
+      ".agent-alchemy/specs/libraries/angular/http-service.specification.md",
+      ".agent-alchemy/specs/libraries/angular/inactivity-monitor.specification.md",
+      ".agent-alchemy/specs/libraries/angular/logging.specification.md",
+      ".agent-alchemy/specs/libraries/angular/notifications.specification.md",
+      ".agent-alchemy/specs/libraries/angular/rules-engine.specification.md",
+      ".agent-alchemy/specs/libraries/angular/state-machine.specification.md",
+      ".agent-alchemy/specs/libraries/angular/validation.specification.md",
+      ".agent-alchemy/specs/libraries/angular/version-check.specification.md",
+      ".agent-alchemy/specs/libraries/angular/zod-rules-engine.specification.md",
+      ".agent-alchemy/specs/standards/angular/angular-responsive-navigation.specification.md",
+      ".agent-alchemy/specs/standards/angular/angular-theme-switching.specification.md",
+      ".agent-alchemy/specs/standards/testing-guidelines.specification.md"
+    ],
+    "recommendation": "Add YAML frontmatter to all specification files with metadata like title, category, version, and applyTo patterns.",
+    "impact": "Reduces ability for automated tools to categorize and apply specifications contextually."
+  },
+  {
+    "severity": "low",
+    "category": "structure",
+    "title": "Projects Missing Tags",
+    "description": "13 projects lack Nx tags for dependency constraints.",
+    "affectedFiles": [
+      "apps/agency",
+      "apps/agency-e2e",
+      "apps/agent-alchemy-dev",
+      "apps/agent-alchemy-dev-api",
+      "apps/agent-alchemy-dev-api-e2e",
+      "apps/agent-alchemy-dev-e2e",
+      "libs/agency/brochure",
+      "libs/agency/github-user",
+      "libs/agency/interview-ui",
+      "libs/agency/layouts",
+      "libs/agency/supabase",
+      "libs/agency/types",
+      "libs/auth0"
+    ],
+    "recommendation": "Add meaningful tags to project.json files to enable Nx dependency graph constraints and better organization.",
+    "impact": "Reduces effectiveness of Nx workspace boundaries and makes it harder to enforce architectural constraints."
+  }
+]

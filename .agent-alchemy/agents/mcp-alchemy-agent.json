@@ -1,0 +1,6 @@
+{
+  "name": "mcp-alchemy-agent",
+  "type": "local",
+  "command": "echo mcp stub",
+  "tools": ["*"]
+}

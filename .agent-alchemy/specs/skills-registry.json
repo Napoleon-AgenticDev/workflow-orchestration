@@ -1,0 +1,58 @@
+{
+  "generatedAt": "2026-02-17T04:59:50.390607Z",
+  "skills": [
+    {
+      "title": "Specification Validation SKILL",
+      "category": "SKILLS",
+      "feature": "Specification Quality",
+      "lastUpdated": "2026-02-16",
+      "source": "Agent Alchemy",
+      "version": "1.0",
+      "aiContext": "true",
+      "applyTo": ["**/*.specification.md"],
+      "keywords": ["validation", "specifications", "metadata", "frontmatter"],
+      "topics": ["specification-authoring", "validation", "ci"],
+      "intents": ["validate-specs"],
+      "runner": ".agent-alchemy/SKILLS/spec-validation/run.sh",
+      "path": "SKILLS/spec-validation/SKILL.md"
+    },
+    {
+      "name": "workspace-analysis",
+      "description": "Analyze Nx workspace specifications, generate machine-readable artifacts (stack.json, guardrails.json), assess Copilot integration readiness, and identify specification quality issues. Use when asked to audit workspace structure, analyze specifications, or prepare repository for AI-assisted development.",
+      "compatibility": "Requires Node.js, TypeScript, npx. Designed for Nx workspaces with package.json and nx.json.",
+      "license": "Proprietary",
+      "metadata": "",
+      "tool-version": "1.0.0",
+      "author": "buildmotion-ai",
+      "repository": "buildmotion-ai-agency",
+      "nx-workspace": "true",
+      "path": "SKILLS/workspace-analysis/SKILL.md"
+    },
+    {
+      "name": "research-and-ideation",
+      "description": "Generate research prompts with automatic spec discovery, save to OUTPUT_LOCATION, and request human review before proceeding",
+      "license": "Proprietary",
+      "metadata": "",
+      "version": "2.3.0",
+      "author": "buildmotion-ai",
+      "repository": "buildmotion-ai-agency",
+      "features": "",
+      "triggers": "",
+      "workflow": "",
+      "path": "SKILLS/research-and-ideation/SKILL.md"
+    },
+    {
+      "name": "content-curation-automation",
+      "description": "Automate research, curation, and content generation for social media platforms. Discovers AI development trends, code patterns, and feature updates from GitHub, web sources, and local codebase. Generates platform-optimized content for Instagram, Twitter, YouTube, and blogs.",
+      "license": "Proprietary",
+      "metadata": "",
+      "version": "1.0.0",
+      "author": "buildmotion-ai",
+      "repository": "buildmotion-ai-agency",
+      "features": "",
+      "triggers": "",
+      "workflow": "",
+      "path": "SKILLS/content-curation-automation/SKILL.md"
+    }
+  ]
+}

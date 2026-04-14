@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://buildmotion.ai/schemas/spec-meta.schema.json",
+  "title": "Agent Alchemy Frontmatter Schema",
+  "description": "Canonical schema for specification and SKILL frontmatter used by spec-index generation.",
+  "type": "object",
+  "required": ["meta"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["id", "title", "version", "status", "specType", "scope", "tags", "createdBy", "createdAt"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "title": { "type": "string", "minLength": 3 },
+        "version": { "type": "string", "pattern": "^\\d+\\.\\d+(\\.\\d+)?(-[a-zA-Z0-9.]+)?$" },
+        "status": { "type": "string", "enum": ["draft", "stable", "deprecated"] },
+        "specType": { "type": "string", "enum": ["specification", "skill"] },
+        "scope": { "type": "string" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "createdBy": { "type": "string", "minLength": 1 },
+        "createdAt": { "type": ["string", "object"], "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" },
+        "reviewedAt": { "type": ["string", "null", "object"], "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" }
+      },
+      "additionalProperties": true
+    },
+    "title": { "type": "string" },
+    "category": { "type": "string" },
+    "feature": { "type": "string" },
+    "product": { "type": "string" },
+    "phase": { "type": "string" },
+    "lastUpdated": { "type": ["string", "object"], "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" },
+    "source": { "type": "string" },
+    "version": { "type": "string" },
+    "aiContext": { "type": "boolean" },
+    "applyTo": { "type": "array", "items": { "type": "string" } },
+    "keywords": { "type": "array", "items": { "type": "string" } },
+    "topics": { "type": "array", "items": { "type": "string" } },
+    "useCases": { "type": "array", "items": { "type": "string" } },
+    "name": { "type": "string" },
+    "description": { "type": "string" }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "meta": { "properties": { "specType": { "const": "specification" } }, "required": ["specType"] } }
+      },
+      "then": {
+        "required": ["title", "category", "lastUpdated", "source", "version", "aiContext", "keywords", "topics", "useCases", "applyTo"],
+        "properties": {
+          "aiContext": { "const": true }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "meta": { "properties": { "specType": { "const": "skill" } }, "required": ["specType"] } }
+      },
+      "then": {
+        "required": ["name", "description", "category", "aiContext", "keywords", "topics", "useCases"],
+        "properties": {
+          "category": { "const": "SKILLS" },
+          "aiContext": { "const": true }
+        }
+      }
+    }
+  ],
+  "additionalProperties": true
+}
