@@ -1,9 +1,13 @@
 import { Routes } from '@angular/router';
 
 export const appRoutes: Routes = [
-  { path: '', redirectTo: 'workflows', pathMatch: 'full' },
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { 
-    path: 'workflows', 
+    path: 'dashboard', 
+    loadComponent: () => import('./pages/dashboard/dashboard.component').then(m => m.DashboardComponent)
+  },
+  { 
+    path: 'templates', 
     loadComponent: () => import('./pages/workflows/workflows.component').then(m => m.WorkflowsComponent)
   },
   { 

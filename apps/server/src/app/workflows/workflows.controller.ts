@@ -1,14 +1,41 @@
-import { Controller, Get, Post, Put, Delete, Body, Param, ParseUUIDPipe } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, ParseUUIDPipe, Query, UsePipes, ValidationPipe } from '@nestjs/common';
+import { IsOptional, IsIn, IsNumber, Min, Max, IsString } from 'class-validator';
 import { WorkflowsService } from './workflows.service';
 import { CreateWorkflowDto, UpdateWorkflowDto, WorkflowNodesDto } from './dto/workflow.dto';
 
+export class WorkflowQueryDto {
+  @IsOptional()
+  @IsString()
+  search?: string;
+
+  @IsOptional()
+  @IsIn(['active', 'draft', 'paused'])
+  status?: 'active' | 'draft' | 'paused';
+
+  @IsOptional()
+  @IsIn(['newest', 'oldest', 'name-asc', 'name-desc', 'status'])
+  sortBy?: 'newest' | 'oldest' | 'name-asc' | 'name-desc' | 'status';
+
+  @IsOptional()
+  @IsNumber()
+  @Min(1)
+  @Max(100)
+  limit?: number;
+
+  @IsOptional()
+  @IsNumber()
+  @Min(0)
+  offset?: number;
+}
+
 @Controller('workflows')
+@UsePipes(new ValidationPipe({ transform: true, transformOptions: { enableImplicitConversion: true } }))
 export class WorkflowsController {
   constructor(private readonly workflowsService: WorkflowsService) {}
 
   @Get()
-  findAll() {
-    return this.workflowsService.findAll();
+  findAll(@Query() query: WorkflowQueryDto) {
+    return this.workflowsService.findAll(query);
   }
 
   @Get(':id')

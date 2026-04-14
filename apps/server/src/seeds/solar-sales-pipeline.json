@@ -1,0 +1,139 @@
+{
+  "name": "Solar Sales Pipeline",
+  "description": "Solar entrepreneur sales workflow: lead capture → qualification → proposal generation → follow-up → analytics",
+  "trigger": {
+    "type": "webhook",
+    "config": {
+      "path": "/webhook/solar-lead"
+    }
+  },
+  "metadata": {
+    "status": "active",
+    "author": "Solar Entrepreneur",
+    "tags": ["solar", "sales", "crm", "automation"]
+  },
+  "nodes": [
+    {
+      "id": "node-1",
+      "nodeId": "lead-capture",
+      "type": "api",
+      "positionX": 100,
+      "positionY": 200,
+      "data": {
+        "name": "Capture Lead",
+        "method": "POST",
+        "url": "/api/crm/leads",
+        "headers": {}
+      }
+    },
+    {
+      "id": "node-2",
+      "nodeId": "qualify",
+      "type": "condition",
+      "positionX": 300,
+      "positionY": 200,
+      "data": {
+        "name": "Qualify Lead",
+        "conditionType": "if",
+        "expression": "lead.budget >= 15000 && lead.roofType === 'shingle'"
+      }
+    },
+    {
+      "id": "node-3",
+      "nodeId": "high-value",
+      "type": "skill",
+      "positionX": 500,
+      "positionY": 100,
+      "data": {
+        "name": "Generate High-Value Proposal",
+        "skill": "marketing-engine",
+        "action": "create-content",
+        "params": {
+          "type": "proposal",
+          "tier": "premium"
+        }
+      }
+    },
+    {
+      "id": "node-4",
+      "nodeId": "standard-proposal",
+      "type": "skill",
+      "positionX": 500,
+      "positionY": 300,
+      "data": {
+        "name": "Generate Standard Proposal",
+        "skill": "marketing-engine",
+        "action": "create-content",
+        "params": {
+          "type": "proposal",
+          "tier": "standard"
+        }
+      }
+    },
+    {
+      "id": "node-5",
+      "nodeId": "email",
+      "type": "api",
+      "positionX": 700,
+      "positionY": 200,
+      "data": {
+        "name": "Send Email",
+        "method": "POST",
+        "url": "/api/email/send",
+        "headers": {},
+        "body": {}
+      }
+    },
+    {
+      "id": "node-6",
+      "nodeId": "schedule",
+      "type": "delay",
+      "positionX": 900,
+      "positionY": 200,
+      "data": {
+        "name": "Follow-up Wait",
+        "duration": 172800000,
+        "unit": "ms"
+      }
+    },
+    {
+      "id": "node-7",
+      "nodeId": "followup",
+      "type": "api",
+      "positionX": 1100,
+      "positionY": 200,
+      "data": {
+        "name": "Follow-up Call",
+        "method": "POST",
+        "url": "/api/crm/task",
+        "headers": {}
+      }
+    },
+    {
+      "id": "node-8",
+      "nodeId": "analytics",
+      "type": "api",
+      "positionX": 1300,
+      "positionY": 200,
+      "data": {
+        "name": "Track Analytics",
+        "method": "POST",
+        "url": "/api/analytics/sales",
+        "headers": {},
+        "body": {
+          "source": "webhook"
+        }
+      }
+    }
+  ],
+  "edges": [
+    { "edgeId": "edge-1", "source": "node-1", "target": "node-2" },
+    { "edgeId": "edge-2", "source": "node-2", "target": "node-3", "condition": "true" },
+    { "edgeId": "edge-3", "source": "node-2", "target": "node-4", "condition": "false" },
+    { "edgeId": "edge-4", "source": "node-3", "target": "node-5" },
+    { "edgeId": "edge-5", "source": "node-4", "target": "node-5" },
+    { "edgeId": "edge-6", "source": "node-5", "target": "node-6" },
+    { "edgeId": "edge-7", "source": "node-6", "target": "node-7" },
+    { "edgeId": "edge-8", "source": "node-7", "target": "node-8" }
+  ]
+}

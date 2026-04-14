@@ -1,0 +1,88 @@
+{
+  "name": "Indie Dev Daily Standup",
+  "description": "Automated daily standup for indie developers: gather metrics → summarize progress → generate update → post to Slack",
+  "trigger": {
+    "type": "cron",
+    "config": {
+      "cron": "0 9 * * *",
+      "timezone": "America/Denver"
+    }
+  },
+  "metadata": {
+    "status": "active",
+    "author": "Indie Developer",
+    "tags": ["indie", "standup", "automation"]
+  },
+  "nodes": [
+    {
+      "id": "node-1",
+      "nodeId": "github",
+      "type": "api",
+      "positionX": 100,
+      "positionY": 200,
+      "data": {
+        "name": "Fetch GitHub Activity",
+        "method": "GET",
+        "url": "https://api.github.com/users/me/events",
+        "headers": {}
+      }
+    },
+    {
+      "id": "node-2",
+      "nodeId": "jira",
+      "type": "api",
+      "positionX": 300,
+      "positionY": 200,
+      "data": {
+        "name": "Get Jira Tasks",
+        "method": "GET",
+        "url": "https://api.atlassian.com/jira/issues",
+        "headers": {}
+      }
+    },
+    {
+      "id": "node-3",
+      "nodeId": "analyze",
+      "type": "agent",
+      "positionX": 500,
+      "positionY": 200,
+      "data": {
+        "name": "Analyze Progress",
+        "agent": "explore",
+        "instructions": "Analyze the fetched data and summarize what was accomplished yesterday, what's planned for today, and any blockers."
+      }
+    },
+    {
+      "id": "node-4",
+      "nodeId": "slack",
+      "type": "api",
+      "positionX": 700,
+      "positionY": 200,
+      "data": {
+        "name": "Post to Slack",
+        "method": "POST",
+        "url": "https://slack.com/api/chat.postMessage",
+        "headers": {},
+        "body": {}
+      }
+    },
+    {
+      "id": "node-5",
+      "nodeId": "notify",
+      "type": "delay",
+      "positionX": 500,
+      "positionY": 100,
+      "data": {
+        "name": "Wait for Response",
+        "duration": 300000,
+        "unit": "ms"
+      }
+    }
+  ],
+  "edges": [
+    { "edgeId": "edge-1", "source": "node-1", "target": "node-3" },
+    { "edgeId": "edge-2", "source": "node-2", "target": "node-3" },
+    { "edgeId": "edge-3", "source": "node-3", "target": "node-4" },
+    { "edgeId": "edge-4", "source": "node-3", "target": "node-5" }
+  ]
+}
