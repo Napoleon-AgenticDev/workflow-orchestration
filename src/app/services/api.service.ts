@@ -72,4 +72,54 @@ export class ApiService {
   triggerSchedule(id: string): Observable<{ message: string }> {
     return this.http.post<{ message: string }>(`${this.baseUrl}/schedules/${id}/trigger`, {});
   }
+
+  // Products
+  getProducts(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/products`);
+  }
+
+  getProduct(id: string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/products/${id}`);
+  }
+
+  createProduct(product: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/products`, product);
+  }
+
+  updateProduct(id: string, product: any): Observable<any> {
+    return this.http.patch<any>(`${this.baseUrl}/products/${id}`, product);
+  }
+
+  deleteProduct(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/products/${id}`);
+  }
+
+  getProductProgress(id: string): Observable<{ total: number; completed: number; percentage: number }> {
+    return this.http.get<{ total: number; completed: number; percentage: number }>(`${this.baseUrl}/products/${id}/progress`);
+  }
+
+  // Features
+  getFeatures(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/features`);
+  }
+
+  getFeaturesByProduct(productId: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/features/product/${productId}`);
+  }
+
+  getFeature(id: string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/features/${id}`);
+  }
+
+  createFeature(feature: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/features`, feature);
+  }
+
+  updateFeature(id: string, feature: any): Observable<any> {
+    return this.http.patch<any>(`${this.baseUrl}/features/${id}`, feature);
+  }
+
+  deleteFeature(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/features/${id}`);
+  }
 }

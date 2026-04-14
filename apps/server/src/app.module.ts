@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { WorkflowsModule } from './app/workflows/workflows.module';
 import { ExecutionsModule } from './app/executions/executions.module';
 import { SchedulesModule } from './app/schedules/schedules.module';
+import { ProductsModule } from './app/products/products.module';
 import { SeederService } from './app/seeder.service';
 import { Workflow } from './app/workflows/entities/workflow.entity';
 import { WorkflowNode } from './app/workflows/entities/node.entity';
@@ -11,6 +12,8 @@ import { WorkflowEdge } from './app/workflows/entities/edge.entity';
 import { Execution } from './app/executions/entities/execution.entity';
 import { ExecutionNode } from './app/executions/entities/execution-node.entity';
 import { Schedule } from './app/schedules/entities/schedule.entity';
+import { Product } from './app/products/entities/product.entity';
+import { ProductFeature } from './app/products/entities/product-feature.entity';
 
 @Module({
   imports: [
@@ -21,13 +24,14 @@ import { Schedule } from './app/schedules/entities/schedule.entity';
       username: process.env['DB_USER'] || 'postgres',
       password: process.env['DB_PASSWORD'] || '',
       database: process.env['DB_NAME'] || 'postgres',
-      entities: [Workflow, WorkflowNode, WorkflowEdge, Execution, ExecutionNode, Schedule],
+      entities: [Workflow, WorkflowNode, WorkflowEdge, Execution, ExecutionNode, Schedule, Product, ProductFeature],
       synchronize: true,
     }),
-    TypeOrmModule.forFeature([Workflow, WorkflowNode, WorkflowEdge]),
+    TypeOrmModule.forFeature([Workflow, WorkflowNode, WorkflowEdge, Product, ProductFeature]),
     WorkflowsModule,
     ExecutionsModule,
     SchedulesModule,
+    ProductsModule,
   ],
   providers: [SeederService],
 })
