@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { WorkflowsModule } from './app/workflows/workflows.module';
 import { ExecutionsModule } from './app/executions/executions.module';
 import { SchedulesModule } from './app/schedules/schedules.module';
+import { ProductsModule } from './app/products/products.module';
 import { SeederService } from './app/seeder.service';
 import { Workflow } from './app/workflows/entities/workflow.entity';
 import { WorkflowNode } from './app/workflows/entities/node.entity';
@@ -11,9 +12,6 @@ import { WorkflowEdge } from './app/workflows/entities/edge.entity';
 import { Execution } from './app/executions/entities/execution.entity';
 import { ExecutionNode } from './app/executions/entities/execution-node.entity';
 import { Schedule } from './app/schedules/entities/schedule.entity';
-
-import { ProductsModule } from './app/products/products.module';
-import { FeaturesModule } from './app/features/features.module';
 import { Product } from './app/products/entities/product.entity';
 import { ProductFeature } from './app/products/entities/product-feature.entity';
 
@@ -34,7 +32,6 @@ import { ProductFeature } from './app/products/entities/product-feature.entity';
     ExecutionsModule,
     SchedulesModule,
     ProductsModule,
-    FeaturesModule,
   ],
   providers: [SeederService],
 })
