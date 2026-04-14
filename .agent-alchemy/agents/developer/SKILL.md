@@ -2447,5 +2447,60 @@ Before completing development phase, verify all specifications:
 
 ---
 
+## Spec Citation Requirements (v2.1.0)
+
+Every implementation file MUST include spec citations. Use this format:
+
+```typescript
+/**
+ * Product entity implementing TypeORM patterns.
+ * 
+ * Implements specifications:
+ *   - .agent-alchemy/specs/frameworks/nestjs/nestjs-database-integration.specification.md#entity-definitions
+ *   - .agent-alchemy/specs/stack/stack.json#primary-key-strategy
+ * 
+ * Feature specification:
+ *   - .agent-alchemy/products/alchemy-flow/features/product-feature-management/architecture/system-architecture.specification.md#database-schema
+ */
+
+@Entity()
+export class Product {
+  @PrimaryGeneratedColumn('uuid')
+  id!: string;
+  // ...
+}
+```
+
+### Citation Format
+
+- **Hierarchical specs**: `.agent-alchemy/specs/<category>/<spec-name>.md#<section>`
+- **Feature specs**: `.agent-alchemy/products/<product>/features/<feature>/<phase>/<spec-name>.md#<section>`
+
+### Tracking
+
+Spec citations are tracked in `.agent-alchemy/analytics/test-c-spec-usage.json`. Use the analytics script:
+
+```bash
+# Record a citation
+node .agent-alchemy/analytics/spec-analytics.js --cite "specs/frameworks/nestjs/database.md"
+
+# Generate report
+node .agent-alchemy/analytics/spec-analytics.js --report
+```
+
+### Why Spec Citations Matter
+
+1. **Traceability** - Every line of code tied to a requirement
+2. **Validation** - Human reviewer can verify spec compliance
+3. **Analytics** - Track which specs add value
+4. **Compliance** - Pre-commit hooks can verify citations
+
 **All Development Specifications Complete**: Ready for Quality Phase ✅
+
+---
+
+**Agent**: Developer v2.1.0 (Added spec citation requirements)  
+**Version**: 2.1.0  
+**Last Updated**: 2026-04-13
+
 ```

@@ -1,3 +1,20 @@
+/**
+ * ProductsComponent - Angular standalone component for Product & Feature Management UI.
+ * 
+ * Implements specifications:
+ *   - .agent-alchemy/specs/stack/angular/architecture.md#component-structure
+ *   - .agent-alchemy/specs/stack/angular/components.md#standalone-components
+ *   - .agent-alchemy/specs/stack/angular/services.md#signal-based-state
+ *   - .agent-alchemy/specs/frameworks/angular/angular-components-templates.specification.md#control-flow
+ * 
+ * Feature specification:
+ *   - .agent-alchemy/products/alchemy-flow/features/product-feature-management/architecture/system-architecture.specification.md#ui-components
+ *   - .agent-alchemy/products/alchemy-flow/features/product-feature-management/plan/functional-requirements.specification.md#user-interactions
+ *   - .agent-alchemy/products/alchemy-flow/features/product-feature-management/architecture/system-architecture.specification.md#component-structure
+ * 
+ * Uses Angular Signals for reactive state management.
+ * Per: stack/angular/services.md#signals
+ */
 import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
