@@ -1,0 +1,216 @@
+{
+  "name": "Enterprise CI/CD Pipeline",
+  "description": "Enterprise development workflow: code push → build → test → security scan → deploy → notify",
+  "trigger": {
+    "type": "event",
+    "config": {
+      "event": "github.push",
+      "branch": "main"
+    }
+  },
+  "metadata": {
+    "status": "active",
+    "author": "DevOps Team",
+    "tags": ["enterprise", "cicd", "devops", "security"]
+  },
+  "nodes": [
+    {
+      "id": "node-1",
+      "nodeId": "trigger",
+      "type": "api",
+      "positionX": 100,
+      "positionY": 200,
+      "data": {
+        "name": "GitHub Webhook",
+        "method": "POST",
+        "url": "/api/cicd/trigger",
+        "headers": {}
+      }
+    },
+    {
+      "id": "node-2",
+      "nodeId": "checkout",
+      "type": "api",
+      "positionX": 250,
+      "positionY": 200,
+      "data": {
+        "name": "Checkout Code",
+        "method": "POST",
+        "url": "/api/cicd/checkout",
+        "headers": {}
+      }
+    },
+    {
+      "id": "node-3",
+      "nodeId": "install",
+      "type": "api",
+      "positionX": 400,
+      "positionY": 200,
+      "data": {
+        "name": "Install Dependencies",
+        "method": "POST",
+        "url": "/api/cicd/install",
+        "headers": {}
+      }
+    },
+    {
+      "id": "node-4",
+      "nodeId": "build",
+      "type": "api",
+      "positionX": 550,
+      "positionY": 200,
+      "data": {
+        "name": "Build Application",
+        "method": "POST",
+        "url": "/api/cicd/build",
+        "headers": {}
+      }
+    },
+    {
+      "id": "node-5",
+      "nodeId": "unit-test",
+      "type": "api",
+      "positionX": 700,
+      "positionY": 100,
+      "data": {
+        "name": "Unit Tests",
+        "method": "POST",
+        "url": "/api/cicd/test",
+        "headers": {}
+      }
+    },
+    {
+      "id": "node-6",
+      "nodeId": "lint",
+      "type": "api",
+      "positionX": 700,
+      "positionY": 200,
+      "data": {
+        "name": "Lint & Type Check",
+        "method": "POST",
+        "url": "/api/cicd/lint",
+        "headers": {}
+      }
+    },
+    {
+      "id": "node-7",
+      "nodeId": "security-scan",
+      "type": "api",
+      "positionX": 700,
+      "positionY": 300,
+      "data": {
+        "name": "Security Scan",
+        "method": "POST",
+        "url": "/api/cicd/security",
+        "headers": {}
+      }
+    },
+    {
+      "id": "node-8",
+      "nodeId": "merge-results",
+      "type": "transform",
+      "positionX": 850,
+      "positionY": 200,
+      "data": {
+        "name": "Merge Test Results",
+        "transformType": "merge"
+      }
+    },
+    {
+      "id": "node-9",
+      "nodeId": "check-failures",
+      "type": "condition",
+      "positionX": 1000,
+      "positionY": 200,
+      "data": {
+        "name": "Check Failures",
+        "conditionType": "if",
+        "expression": "results.failed === 0"
+      }
+    },
+    {
+      "id": "node-10",
+      "nodeId": "deploy-staging",
+      "type": "api",
+      "positionX": 1150,
+      "positionY": 100,
+      "data": {
+        "name": "Deploy to Staging",
+        "method": "POST",
+        "url": "/api/cicd/deploy",
+        "headers": {},
+        "body": { "environment": "staging" }
+      }
+    },
+    {
+      "id": "node-11",
+      "nodeId": "integration-test",
+      "type": "api",
+      "positionX": 1300,
+      "positionY": 100,
+      "data": {
+        "name": "Integration Tests",
+        "method": "POST",
+        "url": "/api/cicd/integration-test",
+        "headers": {}
+      }
+    },
+    {
+      "id": "node-12",
+      "nodeId": "deploy-prod",
+      "type": "api",
+      "positionX": 1450,
+      "positionY": 100,
+      "data": {
+        "name": "Deploy to Production",
+        "method": "POST",
+        "url": "/api/cicd/deploy",
+        "headers": {},
+        "body": { "environment": "production" }
+      }
+    },
+    {
+      "id": "node-13",
+      "nodeId": "notify-failure",
+      "type": "api",
+      "positionX": 1150,
+      "positionY": 350,
+      "data": {
+        "name": "Notify Failure",
+        "method": "POST",
+        "url": "/api/notification/failure",
+        "headers": {}
+      }
+    },
+    {
+      "id": "node-14",
+      "nodeId": "notify-success",
+      "type": "api",
+      "positionX": 1600,
+      "positionY": 100,
+      "data": {
+        "name": "Notify Success",
+        "method": "POST",
+        "url": "/api/notification/success",
+        "headers": {}
+      }
+    }
+  ],
+  "edges": [
+    { "edgeId": "edge-1", "source": "node-1", "target": "node-2" },
+    { "edgeId": "edge-2", "source": "node-2", "target": "node-3" },
+    { "edgeId": "edge-3", "source": "node-3", "target": "node-4" },
+    { "edgeId": "edge-4", "source": "node-4", "target": "node-5" },
+    { "edgeId": "edge-5", "source": "node-4", "target": "node-6" },
+    { "edgeId": "edge-6", "source": "node-4", "target": "node-7" },
+    { "edgeId": "edge-7", "source": "node-5", "target": "node-8" },
+    { "edgeId": "edge-8", "source": "node-6", "target": "node-8" },
+    { "edgeId": "edge-9", "source": "node-7", "target": "node-8" },
+    { "edgeId": "edge-10", "source": "node-8", "target": "node-9" },
+    { "edgeId": "edge-11", "source": "node-9", "target": "node-10", "condition": "true" },
+    { "edgeId": "edge-12", "source": "node-9", "target": "node-13", "condition": "false" },
+    { "edgeId": "edge-13", "source": "node-10", "target": "node-11" },
+    { "edgeId": "edge-14", "source": "node-11", "target": "node-12" },
+    { "edgeId": "edge-15", "source": "node-12", "target": "node-14" }
+  ]
+}

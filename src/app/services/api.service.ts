@@ -1,7 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Workflow, Execution, Schedule, WorkflowNode, WorkflowEdge, CreateWorkflowDto, UpdateWorkflowDto, CreateScheduleDto } from '@alchemy-flow/shared';
+
+export interface WorkflowQueryParams {
+  search?: string;
+  status?: 'active' | 'draft' | 'paused';
+  sortBy?: 'newest' | 'oldest' | 'name-asc' | 'name-desc' | 'status';
+  limit?: number;
+  offset?: number;
+}
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
@@ -10,8 +18,16 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   // Workflows
-  getWorkflows(): Observable<Workflow[]> {
-    return this.http.get<Workflow[]>(`${this.baseUrl}/workflows`);
+  getWorkflows(params?: WorkflowQueryParams): Observable<Workflow[]> {
+    let httpParams = new HttpParams();
+    if (params) {
+      if (params.search) httpParams = httpParams.set('search', params.search);
+      if (params.status) httpParams = httpParams.set('status', params.status);
+      if (params.sortBy) httpParams = httpParams.set('sortBy', params.sortBy);
+      if (params.limit) httpParams = httpParams.set('limit', params.limit.toString());
+      if (params.offset) httpParams = httpParams.set('offset', params.offset.toString());
+    }
+    return this.http.get<Workflow[]>(`${this.baseUrl}/workflows`, { params: httpParams });
   }
 
   getWorkflow(id: string): Observable<Workflow> {
