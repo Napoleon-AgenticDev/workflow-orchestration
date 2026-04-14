@@ -1,0 +1,190 @@
+{
+  "version": "1.0.0",
+  "feature": {
+    "name": "Product & Feature Management",
+    "id": "product-feature-management"
+  },
+  "execution": {
+    "id": "test-c-enhanced-v1",
+    "startTime": "2026-04-14T20:59:58.795Z"
+  },
+  "implementation": {
+    "files": [
+      {
+        "path": "apps/server/src/app/products/entities/product.entity.ts",
+        "loc": 75,
+        "linesOfCode": 34,
+        "commentLines": 35,
+        "functionCount": 0,
+        "classCount": 1,
+        "importCount": 2,
+        "specCitations": 4,
+        "cyclomaticComplexity": 1,
+        "timestamp": "2026-04-14T20:59:58.796Z",
+        "cognitiveScore": 1
+      },
+      {
+        "path": "apps/server/src/app/products/entities/product.entity.ts",
+        "loc": 75,
+        "linesOfCode": 34,
+        "commentLines": 35,
+        "functionCount": 0,
+        "classCount": 1,
+        "importCount": 2,
+        "specCitations": 4,
+        "cyclomaticComplexity": 1,
+        "timestamp": "2026-04-14T21:00:03.838Z",
+        "cognitiveScore": 1
+      },
+      {
+        "path": "apps/server/src/app/products/entities/product-feature.entity.ts",
+        "loc": 79,
+        "linesOfCode": 37,
+        "commentLines": 35,
+        "functionCount": 0,
+        "classCount": 1,
+        "importCount": 2,
+        "specCitations": 3,
+        "cyclomaticComplexity": 1,
+        "timestamp": "2026-04-14T21:00:03.869Z",
+        "cognitiveScore": 1
+      },
+      {
+        "path": "apps/server/src/app/products/products.service.ts",
+        "loc": 111,
+        "linesOfCode": 53,
+        "commentLines": 58,
+        "functionCount": 0,
+        "classCount": 1,
+        "importCount": 5,
+        "specCitations": 2,
+        "cyclomaticComplexity": 3,
+        "timestamp": "2026-04-14T21:00:03.894Z",
+        "cognitiveScore": 1
+      },
+      {
+        "path": "apps/server/src/app/products/products.controller.ts",
+        "loc": 98,
+        "linesOfCode": 42,
+        "commentLines": 56,
+        "functionCount": 0,
+        "classCount": 1,
+        "importCount": 3,
+        "specCitations": 2,
+        "cyclomaticComplexity": 1,
+        "timestamp": "2026-04-14T21:00:03.919Z",
+        "cognitiveScore": 1
+      },
+      {
+        "path": "src/app/pages/products/products.component.ts",
+        "loc": 306,
+        "linesOfCode": 267,
+        "commentLines": 17,
+        "functionCount": 0,
+        "classCount": 1,
+        "importCount": 4,
+        "specCitations": 4,
+        "cyclomaticComplexity": 6,
+        "timestamp": "2026-04-14T21:00:03.944Z",
+        "cognitiveScore": 1
+      }
+    ],
+    "totalLoc": 744,
+    "totalCitations": 0
+  },
+  "tokens": {
+    "operations": [],
+    "totalIn": 0,
+    "totalOut": 0
+  },
+  "analytics": {
+    "retrievalCalls": [],
+    "specUsage": {},
+    "complexity": [
+      {
+        "path": "apps/server/src/app/products/entities/product.entity.ts",
+        "loc": 75,
+        "linesOfCode": 34,
+        "commentLines": 35,
+        "functionCount": 0,
+        "classCount": 1,
+        "importCount": 2,
+        "specCitations": 4,
+        "cyclomaticComplexity": 1,
+        "timestamp": "2026-04-14T20:59:58.796Z",
+        "cognitiveScore": 1
+      },
+      {
+        "path": "apps/server/src/app/products/entities/product.entity.ts",
+        "loc": 75,
+        "linesOfCode": 34,
+        "commentLines": 35,
+        "functionCount": 0,
+        "classCount": 1,
+        "importCount": 2,
+        "specCitations": 4,
+        "cyclomaticComplexity": 1,
+        "timestamp": "2026-04-14T21:00:03.838Z",
+        "cognitiveScore": 1
+      },
+      {
+        "path": "apps/server/src/app/products/entities/product-feature.entity.ts",
+        "loc": 79,
+        "linesOfCode": 37,
+        "commentLines": 35,
+        "functionCount": 0,
+        "classCount": 1,
+        "importCount": 2,
+        "specCitations": 3,
+        "cyclomaticComplexity": 1,
+        "timestamp": "2026-04-14T21:00:03.869Z",
+        "cognitiveScore": 1
+      },
+      {
+        "path": "apps/server/src/app/products/products.service.ts",
+        "loc": 111,
+        "linesOfCode": 53,
+        "commentLines": 58,
+        "functionCount": 0,
+        "classCount": 1,
+        "importCount": 5,
+        "specCitations": 2,
+        "cyclomaticComplexity": 3,
+        "timestamp": "2026-04-14T21:00:03.894Z",
+        "cognitiveScore": 1
+      },
+      {
+        "path": "apps/server/src/app/products/products.controller.ts",
+        "loc": 98,
+        "linesOfCode": 42,
+        "commentLines": 56,
+        "functionCount": 0,
+        "classCount": 1,
+        "importCount": 3,
+        "specCitations": 2,
+        "cyclomaticComplexity": 1,
+        "timestamp": "2026-04-14T21:00:03.919Z",
+        "cognitiveScore": 1
+      },
+      {
+        "path": "src/app/pages/products/products.component.ts",
+        "loc": 306,
+        "linesOfCode": 267,
+        "commentLines": 17,
+        "functionCount": 0,
+        "classCount": 1,
+        "importCount": 4,
+        "specCitations": 4,
+        "cyclomaticComplexity": 6,
+        "timestamp": "2026-04-14T21:00:03.944Z",
+        "cognitiveScore": 1
+      }
+    ]
+  },
+  "scores": {
+    "specCompliance": 0,
+    "citationRate": 0,
+    "retrievalScore": 0,
+    "overall": 0
+  }
+}

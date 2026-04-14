@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "description": "Feature-specific specification index for AI retrieval",
+  "generated": "2026-04-13T00:00:00.000Z",
+  "features": {
+    "product-feature-management": {
+      "description": "Product & Feature Management System with status tracking and progress visualization",
+      "technology_stack": ["angular", "nestjs", "postgresql", "typeorm"],
+      "spec_mappings": {
+        "entities": [
+          {
+            "name": "Product",
+            "spec": ".agent-alchemy/specs/frameworks/nestjs/nestjs-database-integration.specification.md",
+            "section": "#entity-definitions",
+            "example": "entity-product"
+          },
+          {
+            "name": "ProductFeature", 
+            "spec": ".agent-alchemy/specs/frameworks/nestjs/nestjs-database-integration.specification.md",
+            "section": "#entity-relationships",
+            "example": "entity-many-to-one"
+          }
+        ],
+        "services": [
+          {
+            "name": "ProductsService",
+            "spec": ".agent-alchemy/specs/frameworks/nestjs/nestjs-fundamentals.specification.md",
+            "section": "#service-layer",
+            "patterns": ["crud", "repository"]
+          }
+        ],
+        "controllers": [
+          {
+            "name": "ProductsController",
+            "spec": ".agent-alchemy/specs/frameworks/nestjs/nestjs-fundamentals.specification.md",
+            "section": "#rest-controller",
+            "patterns": ["parseuuidpipe", "dto"]
+          }
+        ],
+        "ui_components": [
+          {
+            "name": "ProductsComponent",
+            "spec": ".agent-alchemy/specs/stack/angular/services.md",
+            "section": "#signals",
+            "patterns": ["standalone", "control-flow"]
+          }
+        ]
+      },
+      "key_patterns": {
+        "uuid_primary_key": ".agent-alchemy/specs/stack/stack.json#primary-key-strategy",
+        "cascade_delete": ".agent-alchemy/specs/frameworks/nestjs/nestjs-database-integration.md#cascading",
+        "json_metadata": ".agent-alchemy/specs/frameworks/nestjs/nestjs-database-integration.md#jsonb",
+        "signal_state": ".agent-alchemy/specs/stack/angular/services.md#signal-based-state"
+      },
+      "data_models": {
+        "product_status": {
+          "enum": ["Planning", "In Progress", "Completed"],
+          "spec": ".agent-alchemy/specs/stack/angular/business-rules.md#status-enums"
+        },
+        "feature_status": {
+          "enum": ["Todo", "In Progress", "Done"],
+          "spec": ".agent-alchemy/specs/stack/angular/business-rules.md#status-enums"
+        }
+      }
+    }
+  },
+  "retrieval_tips": {
+    "best_practices": [
+      "Query this index first before searching full specs",
+      "Use exact spec paths from mappings",
+      "Check key_patterns for common implementations"
+    ],
+    "avoid": [
+      "Searching entire .agent-alchemy/specs/ directory",
+      "Using generic search terms without category",
+      "Generating specs without reviewing index"
+    ]
+  }
+}
