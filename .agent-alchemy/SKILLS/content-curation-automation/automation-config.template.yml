@@ -1,0 +1,408 @@
+# Content Automation Configuration
+
+## Automation Schedule
+
+schedule:
+  frequency: weekly  # daily, weekly, bi-weekly, monthly, on-demand
+  day: Monday       # Day of week for weekly frequency
+  time: '09:00'     # Time in HH:MM format (24-hour)
+  timezone: UTC     # Timezone for scheduling
+
+## Target Platforms
+
+platforms:
+  instagram:
+    enabled: true
+    posting_frequency: 3  # posts per week
+    content_types:
+      - posts
+      - reels
+      - stories
+    best_times:
+      - 'Monday 10:00'
+      - 'Wednesday 14:00'
+      - 'Friday 16:00'
+  
+  twitter:
+    enabled: true
+    posting_frequency: 7  # posts per week (daily)
+    content_types:
+      - tweets
+      - threads
+    best_times:
+      - 'Monday-Friday 09:00'
+      - 'Monday-Friday 15:00'
+  
+  youtube:
+    enabled: true
+    posting_frequency: 1  # videos per week
+    content_types:
+      - videos
+      - shorts
+    best_times:
+      - 'Thursday 18:00'
+  
+  linkedin:
+    enabled: true
+    posting_frequency: 2  # posts per week
+    content_types:
+      - posts
+      - articles
+    best_times:
+      - 'Tuesday 10:00'
+      - 'Thursday 10:00'
+  
+  blog:
+    enabled: true
+    platforms:
+      - dev.to
+      - medium
+    posting_frequency: 1  # articles per week
+    best_times:
+      - 'Monday 08:00'
+
+## Content Topics
+
+topics:
+  primary:
+    - AI Development
+    - GitHub Copilot
+    - AI-Powered Development Tools
+    - Copilot Agents & Custom Skills
+  
+  secondary:
+    - Angular Development
+    - NestJS Backend
+    - Nx Workspace & Monorepos
+    - TypeScript Best Practices
+    - Testing Strategies
+    - DevOps & CI/CD
+    - API Design
+    - Performance Optimization
+  
+  tertiary:
+    - VS Code Extensions
+    - Git Workflows
+    - Code Review Practices
+    - Software Architecture
+    - Developer Productivity
+    - Career Development
+
+## Content Types
+
+content_types:
+  - code-snippets        # Short, focused code examples
+  - tutorials            # Step-by-step guides
+  - tips-and-tricks      # Quick productivity wins
+  - feature-highlights   # New capability announcements
+  - industry-trends      # News and analysis
+  - best-practices       # Proven patterns
+  - case-studies         # Real implementation stories
+  - problem-solution     # Debugging and fixes
+  - comparison-guides    # Technology comparisons
+  - architecture-deep-dives  # System design explanations
+
+## Content Sources
+
+sources:
+  github:
+    enabled: true
+    repositories:
+      - buildmotion-ai/buildmotion-ai-agency
+      - microsoft/vscode
+      - angular/angular
+      - nestjs/nest
+      - nrwl/nx
+    scan_frequency: daily
+    content_triggers:
+      - new_commits: true
+      - pull_requests: true
+      - issues: true
+      - discussions: true
+      - releases: true
+  
+  codebase:
+    enabled: true
+    paths:
+      - .agent-alchemy/specs/
+      - .agent-alchemy/agents/
+      - .github/instructions/
+      - documentation/
+    scan_frequency: daily
+    content_triggers:
+      - new_specifications: true
+      - updated_instructions: true
+      - new_agents: true
+      - architecture_decisions: true
+  
+  web_research:
+    enabled: true
+    sources:
+      - url: https://github.blog/
+        category: GitHub News
+      - url: https://angular.io/blog
+        category: Framework Updates
+      - url: https://nestjs.com/blog
+        category: Framework Updates
+      - url: https://dev.to/
+        category: Developer Community
+      - url: https://medium.com/tag/ai-development
+        category: AI Development
+      - url: https://news.ycombinator.com/
+        category: Tech News
+    scan_frequency: daily
+  
+  community:
+    enabled: true
+    sources:
+      - platform: Stack Overflow
+        tags:
+          - angular
+          - nestjs
+          - github-copilot
+          - typescript
+      - platform: Reddit
+        subreddits:
+          - r/angular
+          - r/typescript
+          - r/webdev
+      - platform: Discord
+        servers:
+          - Angular Community
+          - NestJS Community
+
+## Content Strategy
+
+strategy:
+  brand_voice:
+    tone: professional-yet-approachable
+    style: technical-but-accessible
+    personality: encouraging-and-supportive
+  
+  target_audience:
+    primary:
+      - AI-Powered Developers
+      - Full-Stack TypeScript Developers
+      - Angular/NestJS Developers
+    secondary:
+      - Development Team Leads
+      - Software Architects
+      - Technical CTOs
+  
+  content_themes:
+    - week: 1
+      theme: AI-Powered Development
+      focus: GitHub Copilot workflows and custom agents
+    - week: 2
+      theme: Framework Mastery
+      focus: Angular and NestJS advanced patterns
+    - week: 3
+      theme: Developer Productivity
+      focus: Tools, workflows, and automation
+    - week: 4
+      theme: Industry Insights
+      focus: Trends, updates, and best practices
+
+## Review & Approval
+
+review:
+  mode: manual  # manual, auto, hybrid
+  
+  manual:
+    all_content_requires_approval: true
+    approval_checklist:
+      - technical_accuracy_verified
+      - brand_voice_consistent
+      - code_snippets_tested
+      - links_validated
+      - platform_formatting_correct
+      - hashtags_appropriate
+      - seo_optimized
+      - accessibility_considered
+  
+  hybrid:
+    auto_approve:
+      - code-snippets
+      - tips-and-tricks
+      - minor-updates
+    manual_approve:
+      - tutorials
+      - articles
+      - feature-highlights
+      - major-announcements
+  
+  quality_gates:
+    minimum_word_count:
+      twitter: 10
+      instagram: 20
+      linkedin: 50
+      blog: 500
+    code_snippet_requirements:
+      must_be_tested: true
+      must_have_comments: true
+      must_have_explanation: true
+    technical_review_required: true
+
+## Analytics & Optimization
+
+analytics:
+  tracking_enabled: true
+  
+  metrics:
+    engagement:
+      - likes
+      - comments
+      - shares
+      - retweets
+      - replies
+      - video_views
+      - watch_time
+      - article_reads
+    
+    growth:
+      - follower_growth
+      - subscriber_growth
+      - email_list_growth
+      - community_members
+    
+    content_performance:
+      - top_performing_posts
+      - best_posting_times
+      - most_engaging_topics
+      - optimal_content_formats
+  
+  optimization:
+    review_frequency: weekly
+    a_b_testing_enabled: true
+    performance_alerts: true
+    minimum_engagement_threshold:
+      instagram: 5%
+      twitter: 2%
+      youtube: 10%
+      linkedin: 3%
+      blog: 100  # views
+
+## Output Configuration
+
+output:
+  location: .agent-alchemy/content-queue/
+  
+  structure:
+    organize_by: date  # date, platform, topic
+    date_format: YYYY-MM-DD
+    
+  file_naming:
+    format: '{platform}-{type}-{number}-{slug}'
+    examples:
+      - instagram-post-001-angular-signals
+      - twitter-thread-001-copilot-workflow
+      - youtube-video-001-nx-setup
+  
+  metadata:
+    include_frontmatter: true
+    include_timestamps: true
+    include_status: true
+    include_tags: true
+
+## Integration
+
+integrations:
+  github_actions:
+    enabled: false
+    workflow_file: .github/workflows/content-automation.yml
+  
+  vscode_extension:
+    enabled: false
+    extension_id: buildmotion-ai.content-automation
+  
+  platform_apis:
+    twitter:
+      enabled: false
+      api_key: ${TWITTER_API_KEY}
+    linkedin:
+      enabled: false
+      api_key: ${LINKEDIN_API_KEY}
+    youtube:
+      enabled: false
+      api_key: ${YOUTUBE_API_KEY}
+
+## Notifications
+
+notifications:
+  enabled: true
+  
+  channels:
+    - type: email
+      recipients:
+        - content-team@example.com
+    - type: slack
+      webhook: ${SLACK_WEBHOOK_URL}
+    - type: discord
+      webhook: ${DISCORD_WEBHOOK_URL}
+  
+  events:
+    - content_generated
+    - review_required
+    - approval_needed
+    - publishing_scheduled
+    - performance_alert
+
+## Advanced Settings
+
+advanced:
+  content_generation:
+    max_pieces_per_run: 20
+    parallel_generation: true
+    cache_discoveries: true
+    cache_ttl: 86400  # 24 hours in seconds
+  
+  discovery:
+    max_github_items: 50
+    max_web_articles: 20
+    relevance_threshold: 0.7
+    duplicate_detection: true
+  
+  performance:
+    enable_caching: true
+    batch_processing: true
+    rate_limiting:
+      github_api: 5000  # requests per hour
+      web_scraping: 100  # requests per hour
+
+## Environment Variables
+
+# Set these in your environment or .env file
+environment_variables:
+  # GitHub
+  - GITHUB_TOKEN
+  - GITHUB_API_URL
+  
+  # Platform APIs
+  - TWITTER_API_KEY
+  - TWITTER_API_SECRET
+  - LINKEDIN_API_KEY
+  - YOUTUBE_API_KEY
+  
+  # Notifications
+  - SLACK_WEBHOOK_URL
+  - DISCORD_WEBHOOK_URL
+  
+  # Analytics
+  - GOOGLE_ANALYTICS_ID
+  
+  # OpenAI (for content generation enhancements)
+  - OPENAI_API_KEY
+
+## Notes
+
+# This configuration file supports YAML format
+# You can use environment variables with ${VAR_NAME} syntax
+# Boolean values: true, false
+# Array values: use dash notation (- item)
+# Comments start with #
+
+# To apply this configuration:
+# 1. Copy to .agent-alchemy/content-queue/automation-config.yml
+# 2. Customize values for your needs
+# 3. Set required environment variables
+# 4. Run: @workspace run content-curation-automation

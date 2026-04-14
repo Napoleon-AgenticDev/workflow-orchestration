@@ -1,0 +1,73 @@
+intents:
+  research:
+    skill: .agent-alchemy/SKILLS/research-and-ideation/run.sh
+    agent: .agent-alchemy/agents/research/research.agent.md
+    prompt: .github/prompts/research.prompt.md
+    description: Run the Research Agent — generate 5 research specification files (feasibility, market, user, risk, recommendations)
+    cli-flag: --research
+
+  plan:
+    agent: .agent-alchemy/agents/plan/plan.agent.md
+    prompt: .github/prompts/plan.prompt.md
+    description: Run the Plan Agent — generate 6 plan specification files (FRs, NFRs, business rules, UI/UX, sequence, constraints)
+    requires: [research]
+    cli-flag: --plan
+
+  architect:
+    agent: .agent-alchemy/agents/architecture/architecture.agent.md
+    prompt: .github/prompts/architect.prompt.md
+    description: Run the Architecture Agent — generate 8 architecture specification files (system, UI, DB, API, security, business, DevOps, ADRs)
+    requires: [research, plan]
+    cli-flag: --architect
+
+  develop:
+    agent: .agent-alchemy/agents/developer/developer.agent.md
+    prompt: .github/prompts/develop.prompt.md
+    description: Run the Developer Agent — generate 6 development specification files (implementation guide, code structure, dev env, integrations, testing, docs)
+    requires: [research, plan, architect]
+    cli-flag: --develop
+
+  quality:
+    agent: .agent-alchemy/agents/quality/quality.agent.md
+    prompt: .github/prompts/quality.prompt.md
+    description: Run the Quality Agent — validate implementation against 25 prior specs, generate 6 quality reports, create GitHub Issues for defects
+    requires: [research, plan, architect, develop]
+    cli-flag: --quality
+
+  orchestrate:
+    agent: .agent-alchemy/agents/team-orchestrator/team-orchestrator.agent.md
+    prompt: .github/prompts/orchestrate.prompt.md
+    description: Run the Team Orchestrator — compose and execute the full pipeline (research → plan → architect → develop → quality)
+    cli-flag: --orchestrate
+
+  validate-specs:
+    skill: .agent-alchemy/SKILLS/spec-validation/run.sh
+    prompt: .github/prompts/validate.prompt.md
+    description: Validate YAML frontmatter and schema compliance across all specification files
+    cli-flag: --validate
+
+  analyze-workspace:
+    skill: .agent-alchemy/SKILLS/workspace-analysis/run.sh
+    prompt: .github/prompts/analyze.prompt.md
+    description: Analyze the Nx workspace and produce machine-readable artifacts (stack.json, guardrails.json, evidence reports)
+    cli-flag: --analyze
+
+  content-curation:
+    skill: .agent-alchemy/SKILLS/content-curation-automation/run.sh
+    description: Curate and generate content drafts for review (social media, blog posts)
+    cli-flag: --curate
+
+  create-skill:
+    skill: .agent-alchemy/SKILLS/create-skill/run.sh
+    description: Scaffold a new Agent Alchemy SKILL with SKILL.md, run.sh, and README.md
+    cli-flag: --create-skill
+
+  create-agent:
+    skill: .agent-alchemy/SKILLS/agent-creation/run.sh
+    description: Scaffold a new Agent Alchemy agent with agent.md, agent-config.yaml, and run-agent.sh
+    cli-flag: --create-agent
+
+  # Backward-compatibility alias — maps the legacy intent name to the same SKILL as 'research'
+  research-and-ideation:
+    skill: .agent-alchemy/SKILLS/research-and-ideation/run.sh
+    description: Legacy alias for research intent — use 'research' intent for new workflows

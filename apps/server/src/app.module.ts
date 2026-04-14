@@ -12,6 +12,11 @@ import { Execution } from './app/executions/entities/execution.entity';
 import { ExecutionNode } from './app/executions/entities/execution-node.entity';
 import { Schedule } from './app/schedules/entities/schedule.entity';
 
+import { ProductsModule } from './app/products/products.module';
+import { FeaturesModule } from './app/features/features.module';
+import { Product } from './app/products/entities/product.entity';
+import { ProductFeature } from './app/products/entities/product-feature.entity';
+
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -21,13 +26,15 @@ import { Schedule } from './app/schedules/entities/schedule.entity';
       username: process.env['DB_USER'] || 'postgres',
       password: process.env['DB_PASSWORD'] || '',
       database: process.env['DB_NAME'] || 'postgres',
-      entities: [Workflow, WorkflowNode, WorkflowEdge, Execution, ExecutionNode, Schedule],
+      entities: [Workflow, WorkflowNode, WorkflowEdge, Execution, ExecutionNode, Schedule, Product, ProductFeature],
       synchronize: true,
     }),
-    TypeOrmModule.forFeature([Workflow, WorkflowNode, WorkflowEdge]),
+    TypeOrmModule.forFeature([Workflow, WorkflowNode, WorkflowEdge, Product, ProductFeature]),
     WorkflowsModule,
     ExecutionsModule,
     SchedulesModule,
+    ProductsModule,
+    FeaturesModule,
   ],
   providers: [SeederService],
 })

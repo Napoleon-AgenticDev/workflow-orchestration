@@ -1,0 +1,523 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "generated": "2026-01-15",
+  "repository": "https://github.com/buildmotion/buildmotion",
+  "description": "Machine-readable guardrails for automated enforcement and CI/CD integration",
+  
+  "categories": {
+    "architecture": "Architectural boundaries and dependencies",
+    "security": "Security and secrets handling",
+    "validation": "API contracts and validation",
+    "testing": "Testing requirements and coverage",
+    "observability": "Logging, monitoring, and observability",
+    "performance": "Performance constraints and optimization",
+    "dependencies": "Dependency management and upgrades",
+    "documentation": "Documentation requirements"
+  },
+
+  "severityLevels": {
+    "blocker": "Must fix before merge - blocks PR",
+    "major": "Should fix before merge - requires justification to bypass",
+    "minor": "Recommended fix - best practice",
+    "info": "Informational - awareness only"
+  },
+
+  "guardrails": [
+    {
+      "id": "ARCH-001",
+      "category": "architecture",
+      "name": "Module Boundary Enforcement",
+      "severity": "blocker",
+      "automated": true,
+      "enforcement": {
+        "tool": "eslint",
+        "rule": "@nx/enforce-module-boundaries",
+        "config": ".eslintrc.json",
+        "command": "yarn lint"
+      },
+      "description": "Libraries must respect Nx module boundaries",
+      "rationale": "Prevents tight coupling and circular dependencies"
+    },
+    {
+      "id": "ARCH-002",
+      "category": "architecture",
+      "name": "Dependency Direction Rule",
+      "severity": "blocker",
+      "automated": "partial",
+      "enforcement": {
+        "tool": "eslint",
+        "rule": "@nx/enforce-module-boundaries",
+        "manual": "Architecture review in PR",
+        "command": "nx dep-graph"
+      },
+      "description": "Dependencies must flow inward toward core layer",
+      "rationale": "Maintains Clean Architecture principles"
+    },
+    {
+      "id": "ARCH-003",
+      "category": "architecture",
+      "name": "Public API Export Constraints",
+      "severity": "major",
+      "automated": true,
+      "enforcement": {
+        "tool": "typescript",
+        "config": "tsconfig.base.json",
+        "command": "tsc --noEmit"
+      },
+      "description": "Libraries must export through single index.ts barrel file",
+      "rationale": "Encapsulation and stable APIs"
+    },
+    {
+      "id": "ARCH-004",
+      "category": "architecture",
+      "name": "Build Dependency Order",
+      "severity": "blocker",
+      "automated": true,
+      "enforcement": {
+        "tool": "nx",
+        "config": "nx.json",
+        "command": "nx run-many --target=build --all"
+      },
+      "description": "Build targets must declare dependencies via dependsOn",
+      "rationale": "Ensures correct build order"
+    },
+    {
+      "id": "SEC-001",
+      "category": "security",
+      "name": "No Hardcoded Secrets",
+      "severity": "blocker",
+      "automated": false,
+      "enforcement": {
+        "tool": "manual",
+        "recommended": "git-secrets or detect-secrets",
+        "command": "grep -r 'API_KEY\\|SECRET\\|PASSWORD' libs --exclude='*.spec.ts'"
+      },
+      "description": "Never commit secrets, API keys, passwords, or tokens",
+      "rationale": "Prevents security breaches"
+    },
+    {
+      "id": "SEC-002",
+      "category": "security",
+      "name": "Configuration Injection",
+      "severity": "major",
+      "automated": false,
+      "enforcement": {
+        "tool": "manual",
+        "pattern": "Use ConfigurationService or environment files",
+        "antipattern": "Hardcoded URLs or configuration values"
+      },
+      "description": "Configuration must be injected, not hardcoded",
+      "rationale": "Enables multi-environment deployment"
+    },
+    {
+      "id": "SEC-003",
+      "category": "security",
+      "name": "Sensitive Data Logging",
+      "severity": "blocker",
+      "automated": false,
+      "enforcement": {
+        "tool": "manual",
+        "recommended": "Log sanitization in LoggingService"
+      },
+      "description": "Must not log sensitive data (passwords, tokens, PII)",
+      "rationale": "Prevents data exposure in logs"
+    },
+    {
+      "id": "VAL-001",
+      "category": "validation",
+      "name": "Input Validation Required",
+      "severity": "major",
+      "automated": "partial",
+      "enforcement": {
+        "tool": "manual",
+        "libraries": ["@buildmotion/validation", "@buildmotion/rules-engine", "@buildmotion/zod-rules-engine"],
+        "pattern": "Use Zod schemas or Rules Engine for validation"
+      },
+      "description": "All public API inputs must be validated",
+      "rationale": "Prevents invalid data from corrupting state"
+    },
+    {
+      "id": "VAL-002",
+      "category": "validation",
+      "name": "Error Response Structure",
+      "severity": "major",
+      "automated": true,
+      "enforcement": {
+        "tool": "typescript",
+        "type": "ApiResponse<T>",
+        "library": "@buildmotion/core"
+      },
+      "description": "API responses must use standardized ApiResponse structure",
+      "rationale": "Consistent error handling across applications"
+    },
+    {
+      "id": "VAL-003",
+      "category": "validation",
+      "name": "DTOs and Schema Validation",
+      "severity": "minor",
+      "automated": "partial",
+      "enforcement": {
+        "tool": "typescript",
+        "recommended": "Zod schemas with type inference"
+      },
+      "description": "API contracts should use DTOs or Zod schemas",
+      "rationale": "Clear contracts and runtime validation"
+    },
+    {
+      "id": "TEST-001",
+      "category": "testing",
+      "name": "Unit Test Coverage",
+      "severity": "major",
+      "automated": true,
+      "enforcement": {
+        "tool": "jest",
+        "command": "yarn test:coverage",
+        "threshold": {
+          "core": 85,
+          "infrastructure": 80,
+          "crossCutting": 75,
+          "utilities": 70
+        }
+      },
+      "description": "New code must have unit tests (target: 80% coverage)",
+      "rationale": "Prevents regressions and documents behavior"
+    },
+    {
+      "id": "TEST-002",
+      "category": "testing",
+      "name": "Test Isolation",
+      "severity": "major",
+      "automated": false,
+      "enforcement": {
+        "tool": "manual",
+        "pattern": "Use mocks and stubs for external dependencies"
+      },
+      "description": "Tests must not depend on external services",
+      "rationale": "Fast, reliable, offline-capable tests"
+    },
+    {
+      "id": "TEST-003",
+      "category": "testing",
+      "name": "Test Naming Convention",
+      "severity": "blocker",
+      "automated": true,
+      "enforcement": {
+        "tool": "jest",
+        "pattern": "*.spec.ts",
+        "location": "Alongside source files"
+      },
+      "description": "Test files must be named *.spec.ts",
+      "rationale": "Consistent structure and auto-discovery"
+    },
+    {
+      "id": "OBS-001",
+      "category": "observability",
+      "name": "Structured Logging Required",
+      "severity": "major",
+      "automated": false,
+      "enforcement": {
+        "tool": "manual",
+        "library": "@buildmotion/logging",
+        "antipattern": "console.log() in production code",
+        "recommended": "Add ESLint rule to detect console usage"
+      },
+      "description": "Use LoggingService for all logging, not console",
+      "rationale": "Centralized logging with DataDog integration"
+    },
+    {
+      "id": "OBS-002",
+      "category": "observability",
+      "name": "Log Levels",
+      "severity": "minor",
+      "automated": true,
+      "enforcement": {
+        "tool": "typescript",
+        "enum": "Severity (Debug, Information, Warning, Error, Critical)",
+        "library": "@buildmotion/logging"
+      },
+      "description": "Use appropriate log levels for severity",
+      "rationale": "Filter logs and reduce noise"
+    },
+    {
+      "id": "OBS-003",
+      "category": "observability",
+      "name": "DataDog Integration",
+      "severity": "minor",
+      "automated": false,
+      "enforcement": {
+        "tool": "manual",
+        "applies": "Production applications",
+        "libraries": ["@datadog/browser-logs", "@datadog/browser-rum"]
+      },
+      "description": "Production apps should integrate with DataDog",
+      "rationale": "Production monitoring and error alerting"
+    },
+    {
+      "id": "PERF-001",
+      "category": "performance",
+      "name": "Lazy Loading for Feature Modules",
+      "severity": "minor",
+      "automated": false,
+      "enforcement": {
+        "tool": "manual",
+        "applies": "Angular applications",
+        "pattern": "loadChildren in routes"
+      },
+      "description": "Feature modules should be lazy-loaded when appropriate",
+      "rationale": "Reduces initial bundle size"
+    },
+    {
+      "id": "PERF-002",
+      "category": "performance",
+      "name": "Bundle Size Monitoring",
+      "severity": "info",
+      "automated": false,
+      "enforcement": {
+        "tool": "manual",
+        "command": "du -sh dist/libs/*",
+        "recommended": "Add bundle size reports to CI"
+      },
+      "description": "Monitor library output size to avoid bloat",
+      "rationale": "Smaller bundles = faster loading"
+    },
+    {
+      "id": "DEP-001",
+      "category": "dependencies",
+      "name": "Version Alignment",
+      "severity": "blocker",
+      "automated": true,
+      "enforcement": {
+        "tool": "nx",
+        "command": "nx migrate",
+        "packages": ["@angular/*", "@nx/*"]
+      },
+      "description": "All Angular and Nx packages must be on same version",
+      "rationale": "Prevents compatibility issues",
+      "current": {
+        "angular": "18.2.9",
+        "nx": "19.8.4"
+      }
+    },
+    {
+      "id": "DEP-002",
+      "category": "dependencies",
+      "name": "Dependency Updates",
+      "severity": "major",
+      "automated": false,
+      "enforcement": {
+        "tool": "manual",
+        "security": "yarn audit",
+        "recommended": "Dependabot or Renovate"
+      },
+      "description": "Dependencies should be kept up-to-date, security patches required",
+      "rationale": "Security vulnerabilities and bug fixes"
+    },
+    {
+      "id": "DEP-003",
+      "category": "dependencies",
+      "name": "Deprecation Policy",
+      "severity": "major",
+      "automated": "partial",
+      "enforcement": {
+        "tool": "typescript",
+        "warning": "Compiler deprecation warnings",
+        "command": "nx migrate --run-migrations"
+      },
+      "description": "Deprecated APIs must be migrated within one major version",
+      "rationale": "Avoid technical debt"
+    },
+    {
+      "id": "DOC-001",
+      "category": "documentation",
+      "name": "Library README Required",
+      "severity": "blocker",
+      "automated": false,
+      "enforcement": {
+        "tool": "manual",
+        "file": "README.md",
+        "location": "Root of each library",
+        "recommended": "Add CI check for README existence"
+      },
+      "description": "Every library must have a README.md",
+      "rationale": "Discoverability and onboarding"
+    },
+    {
+      "id": "DOC-002",
+      "category": "documentation",
+      "name": "Specification Documentation",
+      "severity": "minor",
+      "automated": false,
+      "enforcement": {
+        "tool": "manual",
+        "directory": ".spec-motion/",
+        "applies": "New libraries"
+      },
+      "description": "Libraries should have specification document",
+      "rationale": "AI-assisted development and architectural documentation"
+    },
+    {
+      "id": "DOC-003",
+      "category": "documentation",
+      "name": "TSDoc for Public APIs",
+      "severity": "minor",
+      "automated": false,
+      "enforcement": {
+        "tool": "manual",
+        "recommended": "eslint-plugin-tsdoc"
+      },
+      "description": "Public APIs should have TSDoc comments",
+      "rationale": "IDE IntelliSense and generated documentation"
+    }
+  ],
+
+  "requiredChecks": {
+    "build": {
+      "command": "yarn libs:build",
+      "description": "All libraries must build successfully",
+      "severity": "blocker"
+    },
+    "lint": {
+      "command": "yarn lint",
+      "description": "ESLint must pass with no errors",
+      "severity": "blocker"
+    },
+    "test": {
+      "command": "yarn test",
+      "description": "All tests must pass",
+      "severity": "blocker"
+    },
+    "typecheck": {
+      "command": "tsc --noEmit",
+      "description": "TypeScript compilation must succeed",
+      "severity": "blocker"
+    }
+  },
+
+  "requiredArtifactsPerFeature": [
+    {
+      "artifact": "feature-spec.md",
+      "description": "Feature specification document",
+      "severity": "major"
+    },
+    {
+      "artifact": "acceptance.md",
+      "description": "Acceptance criteria",
+      "severity": "major"
+    },
+    {
+      "artifact": "validation.md",
+      "description": "Validation and testing strategy",
+      "severity": "major"
+    },
+    {
+      "artifact": "Unit tests",
+      "pattern": "*.spec.ts",
+      "description": "Unit tests for feature code",
+      "severity": "blocker"
+    }
+  ],
+
+  "boundaryRules": {
+    "current": {
+      "enforceBuildableLibDependency": true,
+      "depConstraints": [
+        {
+          "sourceTag": "*",
+          "onlyDependOnLibsWithTags": ["*"]
+        }
+      ]
+    },
+    "recommended": {
+      "depConstraints": [
+        {
+          "sourceTag": "domain:core",
+          "onlyDependOnLibsWithTags": ["domain:core"]
+        },
+        {
+          "sourceTag": "domain:infrastructure",
+          "onlyDependOnLibsWithTags": [
+            "domain:core",
+            "domain:infrastructure",
+            "domain:cross-cutting"
+          ]
+        },
+        {
+          "sourceTag": "domain:cross-cutting",
+          "onlyDependOnLibsWithTags": [
+            "domain:core",
+            "domain:cross-cutting"
+          ]
+        },
+        {
+          "sourceTag": "domain:presentation",
+          "onlyDependOnLibsWithTags": ["*"]
+        }
+      ]
+    }
+  },
+
+  "automationRecommendations": [
+    {
+      "priority": "high",
+      "tool": "git-secrets",
+      "purpose": "Prevent committing secrets",
+      "guardrails": ["SEC-001"]
+    },
+    {
+      "priority": "high",
+      "tool": "ESLint custom rule",
+      "purpose": "Detect console.log() usage",
+      "guardrails": ["OBS-001"]
+    },
+    {
+      "priority": "high",
+      "tool": "Coverage reports in CI",
+      "purpose": "Enforce test coverage thresholds",
+      "guardrails": ["TEST-001"]
+    },
+    {
+      "priority": "medium",
+      "tool": "Dependabot or Renovate",
+      "purpose": "Automate dependency updates",
+      "guardrails": ["DEP-002"]
+    },
+    {
+      "priority": "medium",
+      "tool": "eslint-plugin-tsdoc",
+      "purpose": "Enforce TSDoc comments",
+      "guardrails": ["DOC-003"]
+    },
+    {
+      "priority": "medium",
+      "tool": "Bundle size reports",
+      "purpose": "Monitor library sizes",
+      "guardrails": ["PERF-002"]
+    },
+    {
+      "priority": "low",
+      "tool": "CI check for README",
+      "purpose": "Ensure documentation exists",
+      "guardrails": ["DOC-001"]
+    }
+  ],
+
+  "exceptionProcess": {
+    "steps": [
+      "Create GitHub Issue with exception template",
+      "Provide technical justification",
+      "Propose alternative approach",
+      "Get approval from architecture owner",
+      "Document in code with issue reference",
+      "Track as technical debt"
+    ],
+    "template": "https://github.com/buildmotion/buildmotion/blob/main/.agent-alchemy/guardrails/exception-template.md"
+  },
+
+  "metadata": {
+    "lastReviewed": "2026-01-15",
+    "reviewCadence": "quarterly",
+    "owner": "Architecture Team",
+    "contact": "matt.vaughn@buildmotion.com"
+  }
+}

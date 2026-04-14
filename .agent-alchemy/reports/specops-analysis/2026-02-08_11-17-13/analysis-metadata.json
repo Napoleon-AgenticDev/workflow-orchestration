@@ -1,0 +1,63 @@
+{
+  "timestamp": "2026-02-08T18:17:13.539Z",
+  "workspace": {
+    "name": "@buildmotion-ai-agency/source",
+    "versions": {
+      "nx": "19.8.4",
+      "angular": "~18.2.0"
+    },
+    "projectCounts": {
+      "apps": 7,
+      "libs": 8,
+      "total": 15
+    }
+  },
+  "specifications": {
+    "total": 123,
+    "byType": {
+      "other": 80,
+      "prompt": 1,
+      "specification": 42
+    },
+    "quality": {
+      "totalSpecs": 42,
+      "specsWithFrontmatter": 20,
+      "specsWithCopilotDirectives": 0,
+      "specsWithValidation": 28,
+      "specsWithExamples": 39,
+      "specsWithGuardrails": 17,
+      "averageSpecLength": 525
+    }
+  },
+  "instructions": {
+    "total": 22
+  },
+  "prompts": {
+    "total": 41
+  },
+  "copilotIntegration": {
+    "hasSpecificationContext": true,
+    "hasInstructionIndex": false,
+    "machineReadableArtifacts": [
+      ".agent-alchemy/specs/stack/stack.json",
+      ".agent-alchemy/specs/guardrails/guardrails.json"
+    ],
+    "integrationScore": 80
+  },
+  "issues": {
+    "total": 2,
+    "bySeverity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 1,
+      "low": 1
+    },
+    "byCategory": {
+      "structure": 1,
+      "quality": 1,
+      "integration": 0,
+      "missing": 0,
+      "enforcement": 0
+    }
+  }
+}
