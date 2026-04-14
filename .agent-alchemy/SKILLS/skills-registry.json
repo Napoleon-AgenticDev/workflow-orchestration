@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-17T05:00:13.045557Z",
+  "generatedAt": "2026-04-14T00:00:00.000000Z",
   "skills": [
     {
       "title": "Specification Validation SKILL",
@@ -15,6 +15,38 @@
       "intents": ["validate-specs"],
       "runner": ".agent-alchemy/SKILLS/spec-validation/run.sh",
       "path": "spec-validation/SKILL.md"
+    },
+    {
+      "name": "spec-analytics",
+      "description": "Specification usage analytics and tracking for AI-assisted development. Tracks which specifications are used during implementation, measures retrieval effectiveness, calculates token usage estimates, and generates analytics reports. Use when you want to measure ROI of spec-driven development or enforce spec citation compliance.",
+      "license": "Proprietary",
+      "metadata": "",
+      "tool-version": "1.0.0",
+      "author": "buildmotion-ai",
+      "repository": "buildmotion-ai-agency",
+      "aiContext": "true",
+      "intents": [
+        "track-spec-usage",
+        "measure-spec-roi",
+        "verify-spec-compliance",
+        "analyze-complexity",
+        "generate-analytics-report"
+      ],
+      "runner": ".agent-alchemy/SKILLS/spec-analytics/run.sh",
+      "keywords": [
+        "spec-analytics",
+        "citation-tracking",
+        "token-estimation",
+        "complexity-analysis",
+        "roi",
+        "compliance"
+      ],
+      "topics": [
+        "specification-metrics",
+        "spec-usage-tracking",
+        "development-analytics"
+      ],
+      "path": "spec-analytics/SKILL.md"
     },
     {
       "name": "workspace-analysis",

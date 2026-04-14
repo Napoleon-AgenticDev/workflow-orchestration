@@ -1,0 +1,37 @@
+{
+  "$schema": "./spec-usage.schema.json",
+  "version": "1.0.0",
+  "feature": {
+    "id": "test-feature",
+    "createdAt": "2026-04-14T21:08:48Z"
+  },
+  "execution": {
+    "id": "test-feature-v1",
+    "startTime": "2026-04-14T21:08:48Z",
+    "approach": "spec-driven-with-citations"
+  },
+  "specifications": {
+    "hierarchical": {
+      "stack": { "path": ".agent-alchemy/specs/stack", "specs": [] },
+      "frameworks": { "path": ".agent-alchemy/specs/frameworks", "specs": [] },
+      "standards": { "path": ".agent-alchemy/specs/standards", "specs": [] }
+    },
+    "featureSpecific": { "path": ".agent-alchemy/products", "specs": [] }
+  },
+  "implementation": {
+    "files": [],
+    "totalLoc": 0,
+    "totalCitations": 0
+  },
+  "analytics": {
+    "retrievalCalls": [],
+    "specUsageByCategory": {},
+    "citationLog": []
+  },
+  "scores": {
+    "specCompliance": 0,
+    "citationRate": 0,
+    "retrievalScore": 0,
+    "overall": 0
+  }
+}
