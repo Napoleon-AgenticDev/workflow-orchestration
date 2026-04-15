@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Specification Flow Hook Event Schema",
+  "description": "Schema for capturing specification retrieval and usage events during AI execution",
+  "version": "1.0.0",
+  "eventTypes": [
+    {
+      "type": "spec_requested",
+      "description": "AI requests a specification",
+      "payload": {
+        "specPath": "string",
+        "query": "string",
+        "context": "string",
+        "timestamp": "ISO8601"
+      }
+    },
+    {
+      "type": "spec_retrieved",
+      "description": "Specification was found and returned",
+      "payload": {
+        "specPath": "string",
+        "relevanceScore": "number",
+        "contentLength": "number",
+        "sections": ["string"],
+        "timestamp": "ISO8601"
+      }
+    },
+    {
+      "type": "spec_used_in_code",
+      "description": "Specification was cited in implementation",
+      "payload": {
+        "specPath": "string",
+        "filePath": "string",
+        "lineNumber": "number",
+        "citationType": "enum[reference,implement,extend,validate]",
+        "timestamp": "ISO8601"
+      }
+    },
+    {
+      "type": "agent_invoked",
+      "description": "An agent was invoked (research, plan, architecture, developer)",
+      "payload": {
+        "agentType": "string",
+        "input": "string",
+        "outputArtifacts": ["string"],
+        "duration": "number",
+        "timestamp": "ISO8601"
+      }
+    },
+    {
+      "type": "skill_invoked",
+      "description": "A skill was invoked",
+      "payload": {
+        "skillName": "string",
+        "input": "string",
+        "output": "string",
+        "duration": "number",
+        "timestamp": "ISO8601"
+      }
+    },
+    {
+      "type": "human_review",
+      "description": "Human reviewed specification",
+      "payload": {
+        "specPath": "string",
+        "reviewAction": "enum[approved,rejected,refined,commented]",
+        "feedback": "string",
+        "timestamp": "ISO8601"
+      }
+    },
+    {
+      "type": "guardrail_triggered",
+      "description": "A specification guardrail was checked",
+      "payload": {
+        "ruleId": "string",
+        "specPath": "string",
+        "result": "enum[pass,fail,warning]",
+        "details": "string",
+        "timestamp": "ISO8601"
+      }
+    }
+  ]
+}

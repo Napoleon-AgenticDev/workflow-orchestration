@@ -1,0 +1,436 @@
+{
+  "executionId": "test-d-spec-flow-v1",
+  "startTime": "2026-04-15T07:06:43.533Z",
+  "endTime": "2026-04-15T07:06:43.540Z",
+  "events": [
+    {
+      "type": "spec_requested",
+      "payload": {
+        "specPath": "specs/stack/technology-stack.md",
+        "context": "tech stack",
+        "query": "specs/stack/technology-stack.md",
+        "timestamp": "2026-04-15T07:06:43.539Z"
+      },
+      "executionId": "test-d-spec-flow-v1",
+      "timestamp": "2026-04-15T07:06:43.539Z"
+    },
+    {
+      "type": "agent_invoked",
+      "payload": {
+        "agentType": "research",
+        "input": "Product & Feature Management feasibility",
+        "outputArtifacts": "feasibility-analysis.md",
+        "duration": 4370,
+        "timestamp": "2026-04-15T07:06:43.539Z"
+      },
+      "executionId": "test-d-spec-flow-v1",
+      "timestamp": "2026-04-15T07:06:43.539Z"
+    },
+    {
+      "type": "spec_retrieved",
+      "payload": {
+        "specPath": ".agent-alchemy/specs/stack/technology-stack.md",
+        "relevanceScore": 95,
+        "contentLength": 0,
+        "sections": [
+          "angular",
+          "nestjs",
+          "postgresql"
+        ],
+        "timestamp": "2026-04-15T07:06:43.539Z"
+      },
+      "executionId": "test-d-spec-flow-v1",
+      "timestamp": "2026-04-15T07:06:43.539Z"
+    },
+    {
+      "type": "spec_retrieved",
+      "payload": {
+        "specPath": ".agent-alchemy/specs/frameworks/nestjs/nestjs-fundamentals.md",
+        "relevanceScore": 90,
+        "contentLength": 0,
+        "sections": [
+          "service",
+          "controller",
+          "entity"
+        ],
+        "timestamp": "2026-04-15T07:06:43.539Z"
+      },
+      "executionId": "test-d-spec-flow-v1",
+      "timestamp": "2026-04-15T07:06:43.539Z"
+    },
+    {
+      "type": "human_review",
+      "payload": {
+        "specPath": "feasibility-analysis.md",
+        "reviewAction": "approved",
+        "feedback": "Looks good, proceed with implementation",
+        "timestamp": "2026-04-15T07:06:43.539Z"
+      },
+      "executionId": "test-d-spec-flow-v1",
+      "timestamp": "2026-04-15T07:06:43.539Z"
+    },
+    {
+      "type": "agent_invoked",
+      "payload": {
+        "agentType": "plan",
+        "input": "Generate functional requirements",
+        "outputArtifacts": "functional-requirements.md",
+        "duration": 3145,
+        "timestamp": "2026-04-15T07:06:43.539Z"
+      },
+      "executionId": "test-d-spec-flow-v1",
+      "timestamp": "2026-04-15T07:06:43.539Z"
+    },
+    {
+      "type": "spec_requested",
+      "payload": {
+        "specPath": "frameworks/functional-requirements",
+        "context": "requirements",
+        "query": "frameworks/functional-requirements",
+        "timestamp": "2026-04-15T07:06:43.539Z"
+      },
+      "executionId": "test-d-spec-flow-v1",
+      "timestamp": "2026-04-15T07:06:43.539Z"
+    },
+    {
+      "type": "spec_retrieved",
+      "payload": {
+        "specPath": ".agent-alchemy/specs/frameworks/angular/coding-standards.md",
+        "relevanceScore": 85,
+        "contentLength": 0,
+        "sections": [
+          "typescript",
+          "naming"
+        ],
+        "timestamp": "2026-04-15T07:06:43.539Z"
+      },
+      "executionId": "test-d-spec-flow-v1",
+      "timestamp": "2026-04-15T07:06:43.539Z"
+    },
+    {
+      "type": "spec_retrieved",
+      "payload": {
+        "specPath": ".agent-alchemy/specs/standards/testing-guidelines.md",
+        "relevanceScore": 80,
+        "contentLength": 0,
+        "sections": [
+          "unit-tests",
+          "coverage"
+        ],
+        "timestamp": "2026-04-15T07:06:43.539Z"
+      },
+      "executionId": "test-d-spec-flow-v1",
+      "timestamp": "2026-04-15T07:06:43.539Z"
+    },
+    {
+      "type": "human_review",
+      "payload": {
+        "specPath": "functional-requirements.md",
+        "reviewAction": "refined",
+        "feedback": "Add progress tracking requirement",
+        "timestamp": "2026-04-15T07:06:43.539Z"
+      },
+      "executionId": "test-d-spec-flow-v1",
+      "timestamp": "2026-04-15T07:06:43.539Z"
+    },
+    {
+      "type": "agent_invoked",
+      "payload": {
+        "agentType": "architecture",
+        "input": "Design system architecture",
+        "outputArtifacts": "system-architecture.md",
+        "duration": 3553,
+        "timestamp": "2026-04-15T07:06:43.539Z"
+      },
+      "executionId": "test-d-spec-flow-v1",
+      "timestamp": "2026-04-15T07:06:43.539Z"
+    },
+    {
+      "type": "spec_requested",
+      "payload": {
+        "specPath": "architecture/database-schema",
+        "context": "database",
+        "query": "architecture/database-schema",
+        "timestamp": "2026-04-15T07:06:43.539Z"
+      },
+      "executionId": "test-d-spec-flow-v1",
+      "timestamp": "2026-04-15T07:06:43.539Z"
+    },
+    {
+      "type": "spec_retrieved",
+      "payload": {
+        "specPath": ".agent-alchemy/specs/frameworks/nestjs/nestjs-database-integration.md",
+        "relevanceScore": 92,
+        "contentLength": 0,
+        "sections": [
+          "typeorm",
+          "entities",
+          "relations"
+        ],
+        "timestamp": "2026-04-15T07:06:43.539Z"
+      },
+      "executionId": "test-d-spec-flow-v1",
+      "timestamp": "2026-04-15T07:06:43.539Z"
+    },
+    {
+      "type": "spec_retrieved",
+      "payload": {
+        "specPath": ".agent-alchemy/specs/stack/angular/services.md",
+        "relevanceScore": 88,
+        "contentLength": 0,
+        "sections": [
+          "signals",
+          "state"
+        ],
+        "timestamp": "2026-04-15T07:06:43.539Z"
+      },
+      "executionId": "test-d-spec-flow-v1",
+      "timestamp": "2026-04-15T07:06:43.539Z"
+    },
+    {
+      "type": "guardrail_triggered",
+      "payload": {
+        "ruleId": "entity-naming",
+        "specPath": ".agent-alchemy/specs/frameworks/nestjs/nestjs-fundamentals.md",
+        "result": "pass",
+        "details": "Naming convention followed",
+        "timestamp": "2026-04-15T07:06:43.540Z"
+      },
+      "executionId": "test-d-spec-flow-v1",
+      "timestamp": "2026-04-15T07:06:43.540Z"
+    },
+    {
+      "type": "guardrail_triggered",
+      "payload": {
+        "ruleId": "security-validation",
+        "specPath": ".agent-alchemy/specs/frameworks/nestjs/nestjs-authentication.md",
+        "result": "pass",
+        "details": "No auth required for this feature",
+        "timestamp": "2026-04-15T07:06:43.540Z"
+      },
+      "executionId": "test-d-spec-flow-v1",
+      "timestamp": "2026-04-15T07:06:43.540Z"
+    },
+    {
+      "type": "guardrail_triggered",
+      "payload": {
+        "ruleId": "typescript-strict",
+        "specPath": ".agent-alchemy/specs/frameworks/angular/coding-standards.md",
+        "result": "warning",
+        "details": "Some any types used",
+        "timestamp": "2026-04-15T07:06:43.540Z"
+      },
+      "executionId": "test-d-spec-flow-v1",
+      "timestamp": "2026-04-15T07:06:43.540Z"
+    },
+    {
+      "type": "agent_invoked",
+      "payload": {
+        "agentType": "developer",
+        "input": "Generate implementation code",
+        "outputArtifacts": "entities, services, controllers",
+        "duration": 4227,
+        "timestamp": "2026-04-15T07:06:43.540Z"
+      },
+      "executionId": "test-d-spec-flow-v1",
+      "timestamp": "2026-04-15T07:06:43.540Z"
+    },
+    {
+      "type": "spec_requested",
+      "payload": {
+        "specPath": "nestjs-entity-patterns",
+        "context": "implementation",
+        "query": "nestjs-entity-patterns",
+        "timestamp": "2026-04-15T07:06:43.540Z"
+      },
+      "executionId": "test-d-spec-flow-v1",
+      "timestamp": "2026-04-15T07:06:43.540Z"
+    },
+    {
+      "type": "spec_retrieved",
+      "payload": {
+        "specPath": ".agent-alchemy/specs/frameworks/nestjs/nestjs-database-integration.md#entity-definitions",
+        "relevanceScore": 98,
+        "contentLength": 2500,
+        "sections": [],
+        "timestamp": "2026-04-15T07:06:43.540Z"
+      },
+      "executionId": "test-d-spec-flow-v1",
+      "timestamp": "2026-04-15T07:06:43.540Z"
+    },
+    {
+      "type": "spec_used_in_code",
+      "payload": {
+        "specPath": ".agent-alchemy/specs/frameworks/nestjs/nestjs-database-integration.md",
+        "filePath": "apps/server/src/app/products/entities/product.entity.ts",
+        "lineNumber": 1,
+        "citationType": "implement",
+        "timestamp": "2026-04-15T07:06:43.540Z"
+      },
+      "executionId": "test-d-spec-flow-v1",
+      "timestamp": "2026-04-15T07:06:43.540Z"
+    },
+    {
+      "type": "spec_used_in_code",
+      "payload": {
+        "specPath": ".agent-alchemy/specs/stack/stack.json",
+        "filePath": "apps/server/src/app/products/entities/product.entity.ts",
+        "lineNumber": 12,
+        "citationType": "reference",
+        "timestamp": "2026-04-15T07:06:43.540Z"
+      },
+      "executionId": "test-d-spec-flow-v1",
+      "timestamp": "2026-04-15T07:06:43.540Z"
+    },
+    {
+      "type": "spec_retrieved",
+      "payload": {
+        "specPath": ".agent-alchemy/specs/frameworks/nestjs/nestjs-database-integration.md#relationships",
+        "relevanceScore": 95,
+        "contentLength": 1800,
+        "sections": [],
+        "timestamp": "2026-04-15T07:06:43.540Z"
+      },
+      "executionId": "test-d-spec-flow-v1",
+      "timestamp": "2026-04-15T07:06:43.540Z"
+    },
+    {
+      "type": "spec_used_in_code",
+      "payload": {
+        "specPath": ".agent-alchemy/specs/frameworks/nestjs/nestjs-database-integration.md",
+        "filePath": "apps/server/src/app/products/entities/product-feature.entity.ts",
+        "lineNumber": 1,
+        "citationType": "implement",
+        "timestamp": "2026-04-15T07:06:43.540Z"
+      },
+      "executionId": "test-d-spec-flow-v1",
+      "timestamp": "2026-04-15T07:06:43.540Z"
+    },
+    {
+      "type": "spec_retrieved",
+      "payload": {
+        "specPath": ".agent-alchemy/specs/frameworks/nestjs/nestjs-fundamentals.md#service-layer",
+        "relevanceScore": 97,
+        "contentLength": 1200,
+        "sections": [],
+        "timestamp": "2026-04-15T07:06:43.540Z"
+      },
+      "executionId": "test-d-spec-flow-v1",
+      "timestamp": "2026-04-15T07:06:43.540Z"
+    },
+    {
+      "type": "spec_used_in_code",
+      "payload": {
+        "specPath": ".agent-alchemy/specs/frameworks/nestjs/nestjs-fundamentals.md",
+        "filePath": "apps/server/src/app/products/products.service.ts",
+        "lineNumber": 1,
+        "citationType": "implement",
+        "timestamp": "2026-04-15T07:06:43.540Z"
+      },
+      "executionId": "test-d-spec-flow-v1",
+      "timestamp": "2026-04-15T07:06:43.540Z"
+    },
+    {
+      "type": "spec_retrieved",
+      "payload": {
+        "specPath": ".agent-alchemy/specs/frameworks/nestjs/nestjs-fundamentals.md#rest-controller",
+        "relevanceScore": 96,
+        "contentLength": 900,
+        "sections": [],
+        "timestamp": "2026-04-15T07:06:43.540Z"
+      },
+      "executionId": "test-d-spec-flow-v1",
+      "timestamp": "2026-04-15T07:06:43.540Z"
+    },
+    {
+      "type": "spec_used_in_code",
+      "payload": {
+        "specPath": ".agent-alchemy/specs/frameworks/nestjs/nestjs-fundamentals.md",
+        "filePath": "apps/server/src/app/products/products.controller.ts",
+        "lineNumber": 1,
+        "citationType": "implement",
+        "timestamp": "2026-04-15T07:06:43.540Z"
+      },
+      "executionId": "test-d-spec-flow-v1",
+      "timestamp": "2026-04-15T07:06:43.540Z"
+    },
+    {
+      "type": "spec_retrieved",
+      "payload": {
+        "specPath": ".agent-alchemy/specs/stack/angular/services.md#signals",
+        "relevanceScore": 94,
+        "contentLength": 1500,
+        "sections": [],
+        "timestamp": "2026-04-15T07:06:43.540Z"
+      },
+      "executionId": "test-d-spec-flow-v1",
+      "timestamp": "2026-04-15T07:06:43.540Z"
+    },
+    {
+      "type": "spec_used_in_code",
+      "payload": {
+        "specPath": ".agent-alchemy/specs/stack/angular/services.md",
+        "filePath": "src/app/pages/products/products.component.ts",
+        "lineNumber": 1,
+        "citationType": "implement",
+        "timestamp": "2026-04-15T07:06:43.540Z"
+      },
+      "executionId": "test-d-spec-flow-v1",
+      "timestamp": "2026-04-15T07:06:43.540Z"
+    },
+    {
+      "type": "skill_invoked",
+      "payload": {
+        "skillName": "spec-analytics",
+        "input": "Analyze spec usage",
+        "output": "compliance report",
+        "duration": 611,
+        "timestamp": "2026-04-15T07:06:43.540Z"
+      },
+      "executionId": "test-d-spec-flow-v1",
+      "timestamp": "2026-04-15T07:06:43.540Z"
+    }
+  ],
+  "flow": [
+    "spec_requested",
+    "agent_invoked",
+    "spec_retrieved",
+    "spec_retrieved",
+    "human_review",
+    "agent_invoked",
+    "spec_requested",
+    "spec_retrieved",
+    "spec_retrieved",
+    "human_review",
+    "agent_invoked",
+    "spec_requested",
+    "spec_retrieved",
+    "spec_retrieved",
+    "guardrail_triggered",
+    "guardrail_triggered",
+    "guardrail_triggered",
+    "agent_invoked",
+    "spec_requested",
+    "spec_retrieved",
+    "spec_used_in_code",
+    "spec_used_in_code",
+    "spec_retrieved",
+    "spec_used_in_code",
+    "spec_retrieved",
+    "spec_used_in_code",
+    "spec_retrieved",
+    "spec_used_in_code",
+    "spec_retrieved",
+    "spec_used_in_code",
+    "skill_invoked"
+  ],
+  "stats": {
+    "totalEvents": 31,
+    "specsRequested": 4,
+    "specsRetrieved": 11,
+    "specsUsed": 6,
+    "agentsInvoked": 4,
+    "skillsInvoked": 1,
+    "guardrailsTriggered": 3
+  }
+}
